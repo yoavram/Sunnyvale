@@ -1,0 +1,175 @@
+\documentclass[12pt]{article} % Default font size of the document, change to 10pt to fit more text
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+headheight=12pt
+}
+\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{commath}
+\usepackage{longtable}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[unicode=true,colorlinks=true,urlcolor=CadetBlue,citecolor=black,linkcolor=black]{hyperref}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+%\usepackage{nameref} % included in hyperref
+\usepackage{subcaption}
+
+\usepackage{titlesec}
+% \titleformat{command}[shape]{format}{label}{sep}{before}[after]
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}[]
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}[]
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}[]
+
+% left margin	| space before (vertical) | space after (horizontal)
+\titlespacing{\section}{0em}{0\baselineskip}{0\baselineskip}
+\titlespacing{\subsection}{0em}{0\baselineskip}{1em}
+\titlespacing{\paragraph}{0em}{0\baselineskip}{1em}
+  
+%SetFonts
+% newtxtext+newtxmath
+\usepackage{newtxtext} %loads helv for ss, txtt for tt
+\usepackage{amsmath}
+\usepackage[bigdelims]{newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%SetFonts
+
+% math commands
+\newcommand*{\tr}{^\intercal}
+\let\vec\mathbf
+\newcommand{\matrx}[1]{{\left[ \stackrel{}{#1}\right]}}
+\newcommand{\diag}[1]{\mbox{diag}\matrx{#1}}
+\newcommand{\goesto}{\rightarrow}
+\newcommand{\dspfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2} }
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{result}{Result}
+\renewcommand\qedsymbol{} % no square at end of proof
+\newcommand{\cl}{\mathbf{L}}
+\newcommand{\cj}{\mathbf{J}}
+\newcommand{\ci}{I}
+\newcommand{\E}{\mathbf{E}}
+
+% NatBib
+\usepackage[round,colon,authoryear]{natbib}
+
+% Title page
+\title{Oblique Transmission with Genetic and Cultural Fitnesses}
+
+% authors http://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/preprint/authblk.pdf
+\usepackage[blocks,auth-lg,affil-it]{authblk}
+\author{Yoav Ram}
+\author{Marcus W. Feldman}
+\affil{Department of Biology, Stanford University, Stanford, CA}
+
+\date{\today}
+
+% Document
+\begin{document}
+\maketitle
+
+\section*{Model}
+
+Consider a population with one trait and two trait values $A$ and $B$, with frequencies $x$ and $1-x$.
+Phenotypes are transmitted either by learning from a parent with probability $\rho$ or by learning from a random adult model (e.g. teacher) with probability $1-\rho$.
+The two phenotypes have distinct genetic ($w_A$ and $w_B$) and cultural ($v_A$ and $v_B$) fitness values~\citep{ElMouden2014}, defined by relative reproduction success and cultural influence, respectively.
+\begin{equation} \label{eq:table}
+\begin{array}{ccccc}
+\hbox{ phenotype}&A&B\\
+\hbox{ frequency}&x&1-x\\
+\hbox{ genetic fitness}&w_A&w_B\\
+\hbox{ cultural fitness}&v_A&v_B\\
+\end{array}
+\end{equation}
+
+Given the frequency $x$ of phenotype $A$ in the current generation, the frequency in the next generation $x'$ is given by
+\begin{equation} \label{eq:recurrence}
+x' = \rho x \frac{w_A}{\bar w} + (1-\rho) x \frac{v_A}{\bar v} 
+\end{equation}
+where $\bar w = x w_A + (1-x) w_B$ is the population mean genetic fitness and $\bar v = x v_A + (1-x) v_B$ is the population mean cultural fitness. 
+Note that if $v_A = v_B$ then \eqref{eq:recurrence} simplifies to 
+$x' = \rho x \frac{w_A}{\bar w} + (1-\rho) x$,
+which is eq.~2 from~\citet{Ram2018}.
+So setting $v_A = v_B = \rho$ or even to so other parameter $v_A = v_B = \tau$ will not provide new insight.
+
+\section*{Constant environment}
+
+In a constant environment we will assume, without loss of generality, that $w_A > w_B$.
+We will now find the equilibrium phenotype frequencies.
+Setting $x'=x$ in~\eqref{eq:recurrence} and rearranging, we get a cubic polynomial $ax^3+bx^2+cx$.
+%\begin{equation}
+%\begin{aligned}
+%G(x) &= a x^3 + b x^2 +c x, \quad \text{where} \\
+%a &= (w_A - w_B) (v_A - v_B) \\ 
+%b &= \rho(w_A v_B - w_B v_A) - (w_A - 2 w_B)(v_A - v_B) \\
+%c &= -w_B(v_A - v_B) - \rho (w_A v_B - w_B v_A).  
+%\end{aligned}
+%\end{equation}
+Two roots are easy to verify: $x=0 \Rightarrow x'=0$ and $x=1 \Rightarrow x'=\rho \frac{w_A}{w_A} + (1-\rho) \frac{v_A}{v_A} = 1$. 
+Therefore, the cubic polynomial is $x (1-x) (x^*-x)$ where
+\begin{equation}
+%\begin{aligned}
+x^* = 
+%\frac{w_B v_B - (1-\rho) w_B v_A - \rho w_A v_B}{w_A v_A - w_A v_B - w_B v_A + w_B v_B} = \\
+\rho \frac{w_B v_A - w_A v_B}{(w_A - w_B)(v_A - v_B)} - \frac{w_B}{w_A-w_B}.
+%\end{aligned}
+\end{equation}
+%The conditions for $0 < x^* < 1$ are:
+%\begin{equation}
+%\begin{aligned}
+%\frac{w_B (v_A - v_B)}{w_B v_A - w_A v_B}  < 
+%\rho < 
+%\frac{w_A (v_A - v_B)}{w_B v_A - w_A v_B} \\
+%\end{aligned}
+%\end{equation}
+
+Now, $x=0$ is unstable if
+\begin{equation}
+%\frac{x'}{x} \eqsim 
+\rho \frac{w_A}{w_B} + (1-\rho) \frac{v_A}{v_B} > 1,
+\end{equation}
+and $x=1$ is unstable if
+\begin{equation}
+%\frac{(1-x)'}{1-x} \eqsim 
+\rho \frac{w_B}{w_A} + (1-\rho) \frac{v_B}{v_A} > 1.
+\end{equation}
+
+So both $x=0$ and $x=1$ are unstable if
+\begin{equation} \label{eq:protected_poly_const}
+w_B(v_B - v_A) < \rho (w_A v_B - w_B v_A) < w_A(v_B - v_A),
+\end{equation}
+in which case there exists a protected phenotypic polymorphism $0 < x^* < 1$.
+
+There are three possibilities (disregarding equalities):
+\begin{enumerate}
+\item If $v_A > v_B$ and $\frac{w_A}{w_B} > \frac{v_A}{v_B}$ then condition~\eqref{eq:protected_poly_const} cannot apply as it requires $\rho<0$.
+\item If $v_A > v_B$ and $\frac{w_A}{w_B} < \frac{v_A}{v_B}$ then condition~\eqref{eq:protected_poly_const} cannot apply as it requires $\rho>1$.
+\item If $v_B > v_A$ then $w_A v_B - w_B v_A > 0$, $w_B(v_B - v_A)<w_A v_B - w_B v_A$, and $w_A v_B - w_B v_A > w_A(v_B - v_A)$ and condition~\eqref{eq:protected_poly_const} applies, ensuring a protected phenotypic polymorphism, if
+\begin{equation}
+\frac{w_B(v_B - v_A)}{w_A v_B - w_B v_A} < \rho < \frac{w_A(v_B - v_A)}{w_A v_B - w_B v_A},
+\end{equation}
+which can also be written as 
+\begin{equation}
+\frac{-s_v}{s_w-s_v} 
+< \rho < 
+(1+s_w) \cdot \frac{-s_v}{s_w-s_v},
+\end{equation}
+where $s_w=\frac{w_A}{w_B}-1>0$ and $s_v=\frac{v_A}{v_B}-1<0$.
+\end{enumerate}
+
+%\section*{Acknowledgements.}
+
+%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrtnat}
+%\bibliography{/Users/yoavram/Documents/library}
+\bibliography{genetic_cultural_fitness}
+%%%%%%%%%%%%%%%%%%%
+\end{document}  
