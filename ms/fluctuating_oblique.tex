@@ -1,0 +1,210 @@
+\documentclass[12pt]{extarticle} %twocolumn
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+headheight=12pt
+}
+
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx} % Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+% TeX will automatically convert eps --> pdf in pdflatex		
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{commath}
+\usepackage{longtable}
+\usepackage[hyphens]{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[unicode=true,colorlinks=true,urlcolor=CadetBlue,citecolor=black,linkcolor=black]{hyperref}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[]{authblk}
+
+%SetFonts
+% newtxtext+newtxmath
+\usepackage{newtxtext} %loads helv for ss, txtt for tt
+\usepackage{amsmath}
+\usepackage[bigdelims]{newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%SetFonts
+
+% less space before sections 
+% \@startsection {NAME}{LEVEL}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE} 
+%            optional * [ALTHEADING]{HEADING} 
+\makeatletter
+ \renewcommand\section{\@startsection {section}{1}{\z@}%
+     {-2.5ex \@plus -1ex \@minus -.2ex}%
+     {1.3ex \@plus.2ex}%
+    {\Large\bfseries}}
+
+% Yoav & Lee commands
+\newcommand*{\tr}{^\intercal}
+\let\vec\mathbf
+\newcommand{\matrx}[1]{{\left[ \stackrel{}{#1}\right]}}
+\newcommand{\diag}[1]{\mbox{diag}\matrx{#1}}
+\newcommand{\goesto}{\rightarrow}
+\newcommand{\dspfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2} }
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{result}{Result}
+\renewcommand\qedsymbol{} % no square at end of proof
+\newcommand{\cl}{\mathbf{L}}
+\newcommand{\cj}{\mathbf{J}}
+\newcommand{\ci}{I}
+
+% NatBib
+\usepackage[round,colon,authoryear]{natbib}
+
+% Title page
+\title{Vertical and oblique transmission with fluctuating transmission}
+
+\author[a]{Yoav Ram}
+\author[b]{Uri Liberman}
+\author[a]{Marcus W. Feldman}
+\affil[a]{Department of Biology, Stanford University, Stanford, CA}
+\affil[b]{School of Mathematical Sciences, Tel Aviv University, Israel}
+
+\date{\today}
+
+% Document
+\begin{document}
+\maketitle
+
+% Abstract
+%\begin{abstract}
+%\end{abstract}
+
+% Introduction
+%\section*{Introduction}
+
+
+% Model
+\section*{Model}
+
+Consider a very large population whose members are characterized by a single dichotomous cultural trait with phenotypes $A$ and $B$ and fitness values $1+s$ and $1$, respectively.
+Phenotypes are transmitted vertically with probability $\rho$ or diagonally with probability $1-\rho$.
+Given $x$ the frequency of phenotype $A$ at the current generation, the frequency of $A$ in the next generation is
+\begin{equation} \label{eq:recurrence}
+x' = \rho \frac{1+s}{\overline w} x + (1-\rho)x,
+\end{equation}
+where $\overline w = 1 + xs$ is the population mean fitness.
+
+% Periodic fluctuating transmission
+\subsection*{Periodic fluctuating transmission}
+
+Suppose that the vertical transmission rate $\rho$ is fluctuating, such that $\rho = \rho_1$ in odd generations and $\rho = \rho_2$ in even generations.
+Following \eqref{eq:recurrence}, the recurrence equations for two generations is then
+\begin{equation}\begin{aligned} \label{eq:recurrence_two_generations}
+x' = \rho_1 \frac{1+s}{\overline w} x + (1-\rho_1)x, \\
+x'' = \rho_2 \frac{1+s}{\overline w} x' + (1-\rho_2)x'.
+\end{aligned}\end{equation}
+
+To find the equilibrium $x^*$, that is, solutions of $x''=x$, we note that both fixations (i.e. $x=0$ and $x=1$) are equilibria. 
+Therefore, $x^*$ is a root of $G(x) = \frac{x''-x}{x(1-x)} \gamma$, where
+\begin{align}
+G(x) = ax^2+bx+c, \\
+\gamma = \frac{1+xs}{s} \Big( 1 + xs(2+s\rho_1) + x^2 s^2 (1-\rho_1) \Big) > 0, \\
+a = s^2 (1-\rho_1) (\rho_1 + \rho_2(1-\rho_1)) > 0, \\
+b = s(2+s\rho_1)(\rho_1 + \rho_2(1-\rho_1)) > 0, \\
+c = \rho_1 + \rho_1 \rho_2 s + \rho_2 > 0.
+\end{align} 
+Note that 
+\begin{align}
+G(0) = c > 0,\\ 
+G'(0) = b > 0,\\
+G(1)=a+b+c>c>0,\\
+G'(1)=2a+b>b>0,
+\end{align}
+and therefore $G(x)=0$ is not attained for any $x \in [0,1]$, and there is no steady polymorphism in \eqref{eq:recurrence_two_generations}.
+Also, the local stability of $x=0$ is determined by $(1+s\rho_1)(1+s\rho_2)$.
+Therefore, when $A$ is favored and $s>0$, $x=0$ is unstable and $x=1$ is stable, whereas the opposite applies when $B$ is favored, so that fixation of the favored phenotype is locally stable.
+
+Overall, we find that fluctuations in the mode of transmission ($\rho$) without fluctuations in selection lead to fixation of the favored phenotype without any protected polymorphisms.
+
+% Periodic fluctuating transmission and selection
+\subsection*{Periodic fluctuating transmission and selection}
+
+Now suppose that both the vertical transmission rate $\rho$ and the selection coefficient $s$ fluctuate.
+Following \eqref{eq:recurrence}, the recurrence equations for two generations is then
+\begin{equation}\begin{aligned} \label{eq:recurrence_two_generations_fluc_s}
+x' = \rho_1 \frac{1+s}{1+sx} x + (1-\rho_1)x, \\
+x'' = \rho_2 \frac{1}{1+s-sx} x' + (1-\rho_2)x'.
+\end{aligned}\end{equation}
+
+To find the equilibrium $x^*$, that is, solutions of $x''=x$, we note that both fixations (i.e. $x=0$ and $x=1$) are equilibria. 
+Therefore, $x^*$ is a root of $G(x) = \frac{x''-x}{x(1-x)} \gamma$, where
+\begin{align} \label{eq:Gx_fluctuating_selection_transmission_k1}
+G(x) = ax^2+bx+c, \\
+\gamma = -\frac{1+xs}{s} \Big( 1 + s + s^2x (1-\rho) +s^2x^2(1-\rho) \Big) > 0, \\
+a = s^2 \rho_1 (1-\rho_1) (1 - \rho_2 + \rho_2/\rho_1)) > 0, \\
+b = s(1-\rho_1)(2\rho_2 - s\rho_1(1-\rho_2)), \\
+c = \rho_2 - \rho_1 - s\rho_1(1-\rho_2).
+\end{align} 
+
+Note that 
+\begin{align}
+G(0) = c > 0  \Leftrightarrow \rho_2 > \frac{\rho_1(1+s)}{1+\rho_1s}, \\
+G'(0) = b > 0 \Leftrightarrow \rho_2 > \frac{\rho_1 s}{2 + \rho_1s}, \\
+G(1) = a + b + c = (1+s)[\rho_2 - \rho_1 + s \rho_2 (1-\rho_1)], \\
+G'(1) = 2a + b = s(1-\rho_1)(2(1+s)\rho_2 + s\rho_1(1-\rho_2)) > 0.
+\end{align} 
+From analysis of the quadratic $G(x)$ we can then determine that it has a root in $(0, 1)$, and that a protected polymorphism exists $x^*$ (i.e. $G(x^*)=0$ and $0<x^*<1$), if and only if 
+\begin{equation}
+-s\rho_2(1-\rho_1) < \rho_2 - \rho_1 < s\rho_1(1-\rho_2),
+\end{equation}
+Therefore, a protected polymorphism exists only if the difference in the transmission rate between consecutive generation is not too large, and, surprisingly, the stronger selection is, the larger the difference can be that still allows a protected polymorphism.
+Equivalently, a protected polymorphism exists if
+\begin{equation} \label{eq:rho2_fluctuating_selection_transmission_k1}
+\frac{\rho_1}{1+s(1-\rho_1)} < \rho_2 < \frac{(1+s)\rho_1}{1+s\rho_1}.
+\end{equation}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=\linewidth]{../figures/{rho1_rho2_k=1}.pdf}
+\caption{
+\textbf{Protected polymorphism with fluctuating transmission and selection.}
+The positive root $x^*$ of $G(x)$, see eq.~\ref{eq:Gx_fluctuating_selection_transmission_k1}.
+Dashed lines represent, from left to right, $\rho_2=\frac{\rho_1}{1+s(1-\rho_1)}$, $\rho_2=\rho_1$, and $\rho_2=\frac{(1+s)\rho_1}{1+s\rho_1}$, see eq.~\ref{eq:rho2_fluctuating_selection_transmission_k1}.
+Here, $\rho_1=0.5$, $s=0.1$.}
+\label{fig:rho1_rho2_k=1}
+\end{figure*}
+
+% Randomly fluctuating transmission and selection
+\subsection*{Randomly fluctuating transmission and selection}
+
+We now consider the case that both transmission and selection fluctuate randomly.
+Rewrite eq.~28 from \citet{Ram2018} so that $\rho$ is also a random variable
+\begin{equation}
+x_t = x_t \frac{1 + \rho_t s_t + x_t (1 - \rho_t) s_t}{1 + x_t s_t},
+\end{equation}
+where $s_t$ are independent and identically distributed and also $\rho_t$ are independent and identically distributed ($t=0,1,2,\ldots$), $P(-1+C<s_t<D)=1$ for some positive $C$ and $D$, and $0<\rho_t<1$.
+Therefore, $z_t = \rho_t s_t$  are independent and identically distributed and $P(-1+C < z_t < D$ and from Result~6 and 7 of \citet{Ram2018} we have:
+\begin{itemize}
+\item Suppose $E[log(1+\rho_t s_t)]>0$. Then $x^*=0$ is not stochastically locally stable and in fact $P(lim_{t \to \infty} x_t=0) = 0$.
+\item Suppose $E[log(1+\rho_t s_t)]<0$. Then $x^*=1$ is stochastically locally stable and in particular if $E[\rho_t s_t] \le 0$ then $x^*=0$ is stochastically locally stable.
+\end{itemize}
+
+% Results
+%\section*{Results}
+
+% Discussion
+%\section*{Discussion}
+
+% Acknowledgements
+%{\small
+%\section*{Acknowledgements}
+%
+%This work was supported in part by 
+%the Stanford Center for Computational, Evolutionary and Human Genomics, 
+%and the Morrison Institute for Population and Resources Studies, Stanford University.
+%}
+
+\bibliographystyle{agsm}
+%\bibliography{/Users/yoavram/Documents/library}
+\bibliography{fluctuating_oblique}
+
+\end{document}  
