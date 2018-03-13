@@ -129,6 +129,7 @@ Overall, we find that fluctuations in the mode of transmission ($\rho$) without 
 \subsection*{Periodic fluctuating transmission and selection}
 
 Now suppose that both the vertical transmission rate $\rho$ and the selection coefficient $s$ fluctuate.
+We start with the simple case in which the environment changes every generations, causing fluctuations in selection and transmission.
 Following \eqref{eq:recurrence}, the recurrence equations for two generations is then
 \begin{equation}\begin{aligned} \label{eq:recurrence_two_generations_fluc_s}
 x' = \rho_1 \frac{1+s}{1+sx} x + (1-\rho_1)x, \\
@@ -152,12 +153,12 @@ G'(0) = b > 0 \Leftrightarrow \rho_2 > \frac{\rho_1 s}{2 + \rho_1s}, \\
 G(1) = a + b + c = (1+s)[\rho_2 - \rho_1 + s \rho_2 (1-\rho_1)], \\
 G'(1) = 2a + b = s(1-\rho_1)(2(1+s)\rho_2 + s\rho_1(1-\rho_2)) > 0.
 \end{align} 
-From analysis of the quadratic $G(x)$ we can then determine that it has a root in $(0, 1)$, and that a protected polymorphism exists $x^*$ (i.e. $G(x^*)=0$ and $0<x^*<1$), if and only if 
+From analysis of the quadratic $G(x)$ we can then determine that it has a root in $(0, 1)$, and that a stable polymorphism exists $x^*$ (i.e. $G(x^*)=0$ and $0<x^*<1$), if and only if 
 \begin{equation}
 -s\rho_2(1-\rho_1) < \rho_2 - \rho_1 < s\rho_1(1-\rho_2),
 \end{equation}
-Therefore, a protected polymorphism exists only if the difference in the transmission rate between consecutive generation is not too large, and, surprisingly, the stronger selection is, the larger the difference can be that still allows a protected polymorphism.
-Equivalently, a protected polymorphism exists if
+Therefore, a stable polymorphism exists only if the difference in the transmission rate between consecutive generations is not too large, and, surprisingly, the stronger selection is, the larger the difference can be that still allows a stable polymorphism.
+Equivalently, a stable polymorphism exists if
 \begin{equation} \label{eq:rho2_fluctuating_selection_transmission_k1}
 \frac{\rho_1}{1+s(1-\rho_1)} < \rho_2 < \frac{(1+s)\rho_1}{1+s\rho_1}.
 \end{equation}
@@ -173,6 +174,13 @@ Here, $\rho_1=0.5$, $s=0.1$.}
 \label{fig:rho1_rho2_k=1}
 \end{figure*}
 
+More generally, if the environment changes every $k$ generations, so that for the first $k$ generations $A$ is favored and the transmission rate is $\rho_1$ and for the second $k$ generations $B$ is favored and the transmission rate is $\rho_2$, then, similar to eq.~(12) in~\citet{Ram2018}, the local stability of the fixation of $B$ ($x^*=0$) is determined by the product $[f_A(0)]^k[f_B(0)]^k$, and the local stability of fixation of $A$ ($x^*=1$) is determined by the product  $[f_A(1)]^k[f_B(1)]^k$, with
+\begin{equation}
+f_A(x) = \rho_1 \frac{1+s}{1+sx} + 1 - \rho_1, \quad \text{and} \quad 
+f_B(x) = \rho_2 \frac{1}{1+s-sx} + 1 - \rho_2.
+\end{equation}
+For both fixations to be locally unstable -- thus guaranteeing a protected polymorphism -- we require $[f_A(0)]^k[f_B(0)]^l>1$ and $[f_A(1)]^k[f_B(1)]^l>1$, which is guaranteed by \eqref{eq:rho2_fluctuating_selection_transmission_k1}.
+
 % Randomly fluctuating transmission and selection
 \subsection*{Randomly fluctuating transmission and selection}
 
@@ -187,6 +195,30 @@ Therefore, $z_t = \rho_t s_t$  are independent and identically distributed and $
 \item Suppose $E[log(1+\rho_t s_t)]>0$. Then $x^*=0$ is not stochastically locally stable and in fact $P(lim_{t \to \infty} x_t=0) = 0$.
 \item Suppose $E[log(1+\rho_t s_t)]<0$. Then $x^*=1$ is stochastically locally stable and in particular if $E[\rho_t s_t] \le 0$ then $x^*=0$ is stochastically locally stable.
 \end{itemize}
+
+For example, if $s_t \sim U(-1,1)$ and $\rho_t \sim \beta(1+s, 1)$, such that the covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 0.22$), that is, vertical transmission is likely when $A$ if favored ($s>0$) and oblique transmission is likely when $B$ is favored ($s<0$), then ($Beta$ is the beta function) 
+\begin{equation}
+E[log(1+\rho_t s_t)] = \frac{1}{2} \int_{-1}^{1} {\int_0^1 {\frac{\rho^s \log{(1+\rho s)}}{Beta(1+s, 1)}  \; d\rho}\; ds} \approx 0.2525,
+\end{equation}
+and $B$ almost surely doesn't fix, and
+\begin{equation}
+E[log(1-\rho_t s_t / (1+s_t)] = \frac{1}{2} \int_{-1}^{1} {\int_0^1 {\frac{(1-\rho)^{-s/(1+s)} \log{(1-\rho s / (1+s))}}{Beta(1, 1-s/(1+s)}  \; d\rho}\; ds} \approx -0.076,
+\end{equation}
+so fixation of $A$ is stochastically locally stable.
+The opposite occurs if $\rho_t \sim \beta(1+s, 1)$ and therefore the covariance of $s_t$ and $\rho_t$ is negative ($cov(s_t, \rho_t) \approx -0.2$): in that case, fixation of $B$ is stochastically locally stable and $A$ almost surely doesn't fix.
+
+% Finite population size
+\subsection*{Finite population size}
+
+To include the effect of random drift due to finite population size in the above deterministic model, we follow \citet{Ram2018} and develop a diffusion equation approximation.
+In~\citet{Ram2018} only selection fluctuated via $s_t$, but here we also transmission to fluctuate via $\rho_t$. 
+
+We find a result similar to Result 11 from~\citet{Ram2018}:
+The mean $\mu(x)$ and variance $\sigma^2(x)$ of the change in the frequency of $A$ in one generation for the diffusion approximation in the case of a cycling environment $AkBl$, where $k+l=n$, are
+\begin{equation}
+\mu(x) = S_n x(1-x), \quad \text{and} \quad \sigma^2(x) = n x (1-x)
+\end{equation}
+where $S_n = \sum_{t=1}^{n}{\rho_t s_t}$, which is a weighted average of the selection coefficients in favor of phenotype $A$, weighted by the vertical transmission rate.
 
 % Results
 %\section*{Results}
