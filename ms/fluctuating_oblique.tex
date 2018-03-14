@@ -86,7 +86,7 @@ headheight=12pt
 \section*{Model}
 
 Consider a very large population whose members are characterized by a single dichotomous cultural trait with phenotypes $A$ and $B$ and fitness values $1+s$ and $1$, respectively.
-Phenotypes are transmitted vertically with probability $\rho$ or diagonally with probability $1-\rho$.
+Phenotypes are transmitted vertically with probability $\rho$ or obliquely with probability $1-\rho$.
 Given $x$ the frequency of phenotype $A$ at the current generation, the frequency of $A$ in the next generation is
 \begin{equation} \label{eq:recurrence}
 x' = \rho \frac{1+s}{\overline w} x + (1-\rho)x,
@@ -97,89 +97,87 @@ where $\overline w = 1 + xs$ is the population mean fitness.
 \subsection*{Periodic fluctuating transmission}
 
 Suppose that the vertical transmission rate $\rho$ is fluctuating, such that $\rho = \rho_1$ in odd generations and $\rho = \rho_2$ in even generations.
-Following \eqref{eq:recurrence}, the recurrence equations for two generations is then
+From \eqref{eq:recurrence}, the recurrence equations for two generations is then
 \begin{equation}\begin{aligned} \label{eq:recurrence_two_generations}
 x' = \rho_1 \frac{1+s}{\overline w} x + (1-\rho_1)x, \\
 x'' = \rho_2 \frac{1+s}{\overline w} x' + (1-\rho_2)x'.
 \end{aligned}\end{equation}
 
-To find the equilibrium $x^*$, that is, solutions of $x''=x$, we note that both fixations (i.e. $x=0$ and $x=1$) are equilibria. 
-Therefore, $x^*$ is a root of $G(x) = \frac{x''-x}{x(1-x)} \gamma$, where
-\begin{align}
-G(x) = ax^2+bx+c, \\
-\gamma = \frac{1+xs}{s} \Big( 1 + xs(2+s\rho_1) + x^2 s^2 (1-\rho_1) \Big) > 0, \\
-a = s^2 (1-\rho_1) (\rho_1 + \rho_2(1-\rho_1)) > 0, \\
-b = s(2+s\rho_1)(\rho_1 + \rho_2(1-\rho_1)) > 0, \\
-c = \rho_1 + \rho_1 \rho_2 s + \rho_2 > 0.
-\end{align} 
-Note that 
-\begin{align}
-G(0) = c > 0,\\ 
-G'(0) = b > 0,\\
-G(1)=a+b+c>c>0,\\
-G'(1)=2a+b>b>0,
-\end{align}
-and therefore $G(x)=0$ is not attained for any $x \in [0,1]$, and there is no steady polymorphism in \eqref{eq:recurrence_two_generations}.
-Also, the local stability of $x=0$ is determined by $(1+s\rho_1)(1+s\rho_2)$.
-Therefore, when $A$ is favored and $s>0$, $x=0$ is unstable and $x=1$ is stable, whereas the opposite applies when $B$ is favored, so that fixation of the favored phenotype is locally stable.
-
-Overall, we find that fluctuations in the mode of transmission ($\rho$) without fluctuations in selection lead to fixation of the favored phenotype without any protected polymorphisms.
+First, fixations of $A$ and $B$ ($x^*=0$ and $x^*=1$, respectively) are both equilibria, as they solve $x''=x$.
+Second, because $x'/x = 1+\frac{\rho_1 s (1-x)}{1+sx} > 1$ and $x''/x = 1+\frac{\rho_2 s (1-x)}{1+sx} > 1$, the frequency of $A$ increases every generation and $x^*=1$ is globally stable.
+Therefore, we find that fluctuations in the mode of transmission ($\rho$) without fluctuations in selection lead to fixation of the favored phenotype without any stable polymorphisms.
 
 % Periodic fluctuating transmission and selection
 \subsection*{Periodic fluctuating transmission and selection}
 
-Now suppose that both the vertical transmission rate $\rho$ and the selection coefficient $s$ fluctuate.
-We start with the simple case in which the environment changes every generations, causing fluctuations in selection and transmission.
-Following \eqref{eq:recurrence}, the recurrence equations for two generations is then
-\begin{equation}\begin{aligned} \label{eq:recurrence_two_generations_fluc_s}
-x' = \rho_1 \frac{1+s}{1+sx} x + (1-\rho_1)x, \\
-x'' = \rho_2 \frac{1}{1+s-sx} x' + (1-\rho_2)x'.
+Now suppose that both the vertical transmission rate $\rho$ and the selection coefficient $s$ fluctuate together.
+
+If the environment changes every $k$ generations, so that for the first $k$ generations $A$ is favored and the transmission rate is $\rho_1$ and for the second $k$ generations $B$ is favored and the transmission rate is $\rho_2$.
+The change in the frequency of $A$ when either $A$ or $B$ is favored is described by $F_A(x)$ and $F_B(x)$, respectively, where
+\begin{equation}\begin{aligned} \label{eq:recurrence_periodic_fluc}
+F_A(x) = \rho_1 \frac{1+s}{1+sx} x + (1-\rho_1)x, \\
+F_B(x) = \rho_2 \frac{1}{1+s-sx'} x' + (1-\rho_2)x'.
 \end{aligned}\end{equation}
-
-To find the equilibrium $x^*$, that is, solutions of $x''=x$, we note that both fixations (i.e. $x=0$ and $x=1$) are equilibria. 
-Therefore, $x^*$ is a root of $G(x) = \frac{x''-x}{x(1-x)} \gamma$, where
-\begin{align} \label{eq:Gx_fluctuating_selection_transmission_k1}
-G(x) = ax^2+bx+c, \\
-\gamma = -\frac{1+xs}{s} \Big( 1 + s + s^2x (1-\rho) +s^2x^2(1-\rho) \Big) > 0, \\
-a = s^2 \rho_1 (1-\rho_1) (1 - \rho_2 + \rho_2/\rho_1)) > 0, \\
-b = s(1-\rho_1)(2\rho_2 - s\rho_1(1-\rho_2)), \\
-c = \rho_2 - \rho_1 - s\rho_1(1-\rho_2).
-\end{align} 
-
-Note that 
-\begin{align}
-G(0) = c > 0  \Leftrightarrow \rho_2 > \frac{\rho_1(1+s)}{1+\rho_1s}, \\
-G'(0) = b > 0 \Leftrightarrow \rho_2 > \frac{\rho_1 s}{2 + \rho_1s}, \\
-G(1) = a + b + c = (1+s)[\rho_2 - \rho_1 + s \rho_2 (1-\rho_1)], \\
-G'(1) = 2a + b = s(1-\rho_1)(2(1+s)\rho_2 + s\rho_1(1-\rho_2)) > 0.
-\end{align} 
-From analysis of the quadratic $G(x)$ we can then determine that it has a root in $(0, 1)$, and that a stable polymorphism exists $x^*$ (i.e. $G(x^*)=0$ and $0<x^*<1$), if and only if 
+Fixations of $A$ ($x^*=1$) and $B$ ($x^*=0$) are locally stable if, respectively,
+\begin{equation}\begin{aligned}
+\big(F'_A(1) F'_B(1)\big)^k < 1, \\
+\big(F'_A(0) F'_B(0)\big)^k < 1. \\
+\end{aligned}\end{equation}
+and if these both of these conditions are not met then there exists a protected polymorphism.
+Therefore, for a protected polymorphism we require
 \begin{equation}
--s\rho_2(1-\rho_1) < \rho_2 - \rho_1 < s\rho_1(1-\rho_2),
+1 < F'_A(1) F'_B(1) = \big(1-\rho_1\frac{s}{1+s}\big)\big(1+\rho_2 s\big) 
+= 1-\frac{1}{1+s}\big(\rho_2(1+s-\rho_1)-\rho_1\big),
 \end{equation}
-Therefore, a stable polymorphism exists only if the difference in the transmission rate between consecutive generations is not too large, and, surprisingly, the stronger selection is, the larger the difference can be that still allows a stable polymorphism.
-Equivalently, a stable polymorphism exists if
-\begin{equation} \label{eq:rho2_fluctuating_selection_transmission_k1}
-\frac{\rho_1}{1+s(1-\rho_1)} < \rho_2 < \frac{(1+s)\rho_1}{1+s\rho_1}.
+and
+\begin{equation}
+1 < F'_A(0) F'_B(0) = \big(1+\rho_1 s\big)\big(1-\rho_2 \frac{s}{1+s}\big) 
+= 1+\frac{s}{1+s}\big(\rho_1(1+s) -\rho_2(1+\rho_1 s)\big),
+\end{equation}
+which can be summarized as a condition on $\rho_2$
+\begin{equation} \label{eq:poly_condition_periodic_fluc}
+\frac{\rho_1}{1+s(1-\rho_1)} < \rho_2 < \frac{(1+s)\rho_1}{1+s\rho_1},
+\end{equation}
+or as a condition on the difference between $\rho_1$ and $\rho_2$
+\begin{equation}
+-s\rho_2(1-\rho_1) < \rho_2 - \rho_1 < s\rho_1(1-\rho_2).
 \end{equation}
 
-\begin{figure*}[ht]
+\begin{figure*}[hbt]
 \centering
 \includegraphics[width=\linewidth]{../figures/{rho1_rho2_k=1}.pdf}
 \caption{
 \textbf{Protected polymorphism with fluctuating transmission and selection.}
-The positive root $x^*$ of $G(x)$, see eq.~\ref{eq:Gx_fluctuating_selection_transmission_k1}.
-Dashed lines represent, from left to right, $\rho_2=\frac{\rho_1}{1+s(1-\rho_1)}$, $\rho_2=\rho_1$, and $\rho_2=\frac{(1+s)\rho_1}{1+s\rho_1}$, see eq.~\ref{eq:rho2_fluctuating_selection_transmission_k1}.
+The positive root $x^*$ of $G(x)$, see eq.~\ref{eq:xstar_periodic_fluc_k=1}.
+Dashed lines represent, from left to right, $\rho_2=\frac{\rho_1}{1+s(1-\rho_1)}$, $\rho_2=\rho_1$, and $\rho_2=\frac{(1+s)\rho_1}{1+s\rho_1}$, see eq.~\ref{eq:poly_condition_periodic_fluc}.
 Here, $\rho_1=0.5$, $s=0.1$.}
 \label{fig:rho1_rho2_k=1}
 \end{figure*}
 
-More generally, if the environment changes every $k$ generations, so that for the first $k$ generations $A$ is favored and the transmission rate is $\rho_1$ and for the second $k$ generations $B$ is favored and the transmission rate is $\rho_2$, then, similar to eq.~(12) in~\citet{Ram2018}, the local stability of the fixation of $B$ ($x^*=0$) is determined by the product $[f_A(0)]^k[f_B(0)]^k$, and the local stability of fixation of $A$ ($x^*=1$) is determined by the product  $[f_A(1)]^k[f_B(1)]^k$, with
-\begin{equation}
-f_A(x) = \rho_1 \frac{1+s}{1+sx} + 1 - \rho_1, \quad \text{and} \quad 
-f_B(x) = \rho_2 \frac{1}{1+s-sx} + 1 - \rho_2.
-\end{equation}
-For both fixations to be locally unstable -- thus guaranteeing a protected polymorphism -- we require $[f_A(0)]^k[f_B(0)]^l>1$ and $[f_A(1)]^k[f_B(1)]^l>1$, which is guaranteed by \eqref{eq:rho2_fluctuating_selection_transmission_k1}.
+\autoref{fig:rho1_rho2_k=1} shows the solution for $F_B(F_A(x))=x$ for $k=1$, highlighting the area of the parameter space in which a protected polymorphism exists.
+Surprisingly, the stronger selection is, the larger the difference can be that still allows a stable polymorphism.
+
+In the case of $k=1$ we can also find the frequency of $A$ at the protected polymorphism, $x^*$.
+Denote $F_B(F_A(x))-x = G(x) \cdot x (1-x) \cdot \gamma$ with
+\begin{align} \label{eq:xstar_periodic_fluc_k=1}
+G(x) = ax^2+bx+c, \\
+\gamma = -\frac{1+xs}{s} \Big( 1 + s + s^2x (1-\rho) +s^2x^2(1-\rho) \Big) > 0, \\
+a = s^2 \rho_1 (1-\rho_1) (1 - \rho_2 + \rho_2/\rho_1)) > 0, \\
+b = s(1-\rho_1)(2\rho_2 - s\rho_1(1-\rho_2)), \\
+c = \rho_2 - \rho_1 - s\rho_1(1-\rho_2),
+\end{align} 
+and then $x^*$ is a solution of the quadratic $G(x)=0$, given by $x^* = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$.
+The conditions for existence of the protected polymorphism \eqref{eq:poly_condition_periodic_fluc} is equivalent to $c<0$.% and $a+b+c>0$.
+Therefore, $\sqrt{b^2-4ac} > b$, and if $0<s<1$ (such that $b$ is guaranteed to be positive) then $x^*= \frac{-b+\sqrt{b^2-4ac}}{2a}$ (\autoref{fig:rho1_rho2_k=1}).
+
+
+ 
+%\begin{align}
+%G(0) = c > 0  \Leftrightarrow \rho_2 > \frac{\rho_1(1+s)}{1+\rho_1s}, \\
+%G'(0) = b > 0 \Leftrightarrow \rho_2 > \frac{\rho_1 s}{2 + \rho_1s}, \\
+%G(1) = a + b + c = (1+s)[\rho_2 - \rho_1 + s \rho_2 (1-\rho_1)], \\
+%G'(1) = 2a + b = s(1-\rho_1)(2(1+s)\rho_2 + s\rho_1(1-\rho_2)) > 0.
+%\end{align} 
 
 % Randomly fluctuating transmission and selection
 \subsection*{Randomly fluctuating transmission and selection}
