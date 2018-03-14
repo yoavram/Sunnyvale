@@ -190,11 +190,18 @@ x_t = x_t \frac{1 + \rho_t s_t + x_t (1 - \rho_t) s_t}{1 + x_t s_t},
 where $s_t$ are independent and identically distributed and also $\rho_t$ are independent and identically distributed ($t=0,1,2,\ldots$), $P(-1+C<s_t<D)=1$ for some positive $C$ and $D$, and $0<\rho_t<1$.
 Therefore, $z_t = \rho_t s_t$  are independent and identically distributed and $P(-1+C < z_t < D$ and from Result~6 and 7 of \citet{Ram2018} we have:
 \begin{itemize}
-\item Suppose $E[log(1+\rho_t s_t)]>0$. Then $x^*=0$ is not stochastically locally stable and in fact $P(lim_{t \to \infty} x_t=0) = 0$.
-\item Suppose $E[log(1+\rho_t s_t)]<0$. Then $x^*=1$ is stochastically locally stable and in particular if $E[\rho_t s_t] \le 0$ then $x^*=0$ is stochastically locally stable.
+\item Suppose $E[log(1+\rho_t s_t)]>0$. Then $x^*=0$ is not stochastically locally stable and in fact $P(lim_{t \to \infty} x_t=0) = 0$, i.e., fixation of $B$ almost surely does not occur.
+\item Suppose $E[log(1+\rho_t s_t)]<0$. Then $x^*=0$ is stochastically locally stable and 
+\item Similarly, $E[log(1-\rho_t s_t/(1+s_t)]<0$ leads to stochastic local stability of $x^*=1$, and $E[log(1-\rho_t s_t/(1+s_t))]>0$ assures that fixation of $A$ almost surely does not occur.
+\item In particular, if $E[\rho_t s_t] = cov(\rho_t, s_t) + E[\rho_t] E[s_t] \le 0$ then $x^*=0$ is stochastically locally stable, and similarly if $E[-\rho_t s_t/(1+s_t)] = cov(\rho_t, -s_t/(1+s_t)) - E[\rho_t] E[s_t/(1+s_t)] \le 0$ then $x^*=1$ is stochastically locally stable.
 \end{itemize}
 
-For example, if $s_t \sim U(-1,1)$ and $\rho_t \sim \beta(1+s, 1)$, such that the covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 0.22$), that is, vertical transmission is likely when $A$ if favored ($s>0$) and oblique transmission is likely when $B$ is favored ($s<0$), then ($Beta$ is the beta function) 
+We will now present a number of examples.
+First, if $s_t \sim U(-1, 1)$ and $\rho_t \sim U(0,1)$ independently (in particular, $cov(\rho_t, s_t)=0$), then both $E[log(1+\rho_t s_t)]$ and $E[log(1-\rho_t s_t/(1+s_t))]$ are negative, and therefore both fixations ($A$ and $B$) are stochastically locally stable. 
+It is important to note that without fluctuations in $\rho$ (i.e. fixed $\rho$) it is not possible to have both fixations stable~\citep{Ram2018}.
+
+Second, if $s_t$ is symmetric around zero ($E[s_t]=E[s_t/(1+s_t)]=0$), and $\rho_t$ and $s_t$ are positively (negatively) correlated, such that vertical transmission is more likely when $A$ ($B$) is favored, then $E[-\rho_t s_t/(1+s_t)]<0$ ($E[-\rho_t s_t]<0$) and therefore fixation of $A$ ($B$) is stochastically locally stable.
+For example, let $s_t \sim U(-1,1)$ and $\rho_t \sim \beta(1+s, 1)$, such that the covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 0.22$), that is, vertical transmission is more likely when $A$ if favored (when $s_t>0$) and oblique transmission is more  likely when $B$ is favored (when $s_t<0$), then ($Beta$ being the beta function), 
 \begin{equation}
 E[log(1+\rho_t s_t)] = \frac{1}{2} \int_{-1}^{1} {\int_0^1 {\frac{\rho^s \log{(1+\rho s)}}{Beta(1+s, 1)}  \; d\rho}\; ds} \approx 0.2525,
 \end{equation}
@@ -203,7 +210,19 @@ and $B$ almost surely doesn't fix, and
 E[log(1-\rho_t s_t / (1+s_t)] = \frac{1}{2} \int_{-1}^{1} {\int_0^1 {\frac{(1-\rho)^{-s/(1+s)} \log{(1-\rho s / (1+s))}}{Beta(1, 1-s/(1+s)}  \; d\rho}\; ds} \approx -0.076,
 \end{equation}
 so fixation of $A$ is stochastically locally stable.
-The opposite occurs if $\rho_t \sim \beta(1+s, 1)$ and therefore the covariance of $s_t$ and $\rho_t$ is negative ($cov(s_t, \rho_t) \approx -0.2$): in that case, fixation of $B$ is stochastically locally stable and $A$ almost surely doesn't fix.
+The opposite occurs if $\rho_t \sim \beta(1+s, 1)$ and therefore the covariance of $s_t$ and $\rho_t$ is negative ($cov(s_t, \rho_t) \approx -0.2$); in that case, fixation of $B$ is stochastically locally stable and $A$ almost surely doesn't fix.
+
+Third, it is also possible that both fixations are stochastically locally unstable, but, similar to the case of periodic fluctuations, this can only occur if the fluctuations in $\rho_t$ are small.
+For example, \autoref{fig:rho1_rho2_stoch_p} shows the expected outcome when $s_t=s$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-s$ and $\rho_t=\rho_2$ with probability $1-p=0.495$. The blue and red areas denote expected fixation of $A$ and $B$, respectively (i.e. stochastic local stability) and the white area shows expected polymorphism (both fixations are not stochastically locally stable). 
+
+\begin{figure*}[hbt]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/{rho1_rho2_stoch_p}.pdf}
+\caption{
+\textbf{Stochastic local stability.}
+Here, $s_t=s$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-s$ and $\rho_t=\rho_2$ with probability $1-p=0.495$, with $s=0.05$ and $p=0.505$, a value combination that allowed a stochastic polymorphism with a fixed vertical transmission rate $\rho=0.1$ in~\citet[Fig.~2]{Ram2018}.}
+\label{fig:rho1_rho2_stoch_p}
+\end{figure*}
 
 % Finite population size
 \subsection*{Finite population size}
