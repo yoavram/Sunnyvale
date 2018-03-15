@@ -79,8 +79,31 @@ headheight=12pt
 %\end{abstract}
 
 % Introduction
-%\section*{Introduction}
+\section*{Introduction}
 
+Cultural transmission comprises of both vertical transmission (from parent to offspring) and non-vertical transmission, namely horizontal (between peers) and oblique (from non-parental adults to offspring). 
+\citet[ch.~3]{Cavalli-Sforza1981} first introduced models in which a specific trait is transmitted either vertically or obliquely.
+Others models include different forms of cultural transmission that include both vertical and oblique transmission; usually the transmission strategy of each individual is fixed: for example, \citet{McElreath2008} and \cite{Aoki2005} focused on competitions between individual, vertical (innate), and oblique or horizontal learners; \citet{Fogarty2017} compared the effect of different oblique mechanisms (random, success-biased, best-of-k, one-to-many) on the cultural richness and diversity of the population; and \citet{Aoki2012} modeled scenarios in which individual and social learning occur during separate stages in life. 
+In many of these models the effects of fluctuating selection and environmental changes was studied~\citep[reviewed in][]{Aoki2014}. 
+For example, we recently studied a model in which each individual can learn his phenotype either from a parent, with probability $\rho$, or from a non-parental adult, with probability $1-\rho$; see \autoref{fig:transmission}.
+We found that if selection fluctuates between favoring two phenotypes, but on average favored both phenotypes for similar time periods, then a polymorphism can be maintained~\citep{Ram2018}.
+
+However, the case in which transmission also fluctuates has not received much attention.
+Nevertheless, if we assume that social learning can be affected by weather, food availability, population density, and even political atmosphere, then it is only logical that the parameters of transmission will fluctuate over time. 
+For example, it may be the case that during cold seasons offspring are more likely to stay close to their parents and therefore learn vertically, whereas during warm seasons they are more likely to wander and interact with other adults, therefore learn obliquely.
+
+Here, we analyze a model in which the probability $\rho$ that individuals learn from their parents (vertical transmission), rather than from non-parental adults (oblique transmission), fluctuates over time.
+We find that a polymorphic population cannot be maintained if unless these fluctuations are very small and only weakly correlated with fluctuations in selection.
+We suggest that the effect of environmental changes can affect cultural evolution not only through their effect of cultural selection, but also on cultural transmission. 
+
+\begin{figure*}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{../figures/{transmission}.png}
+\caption{
+\textbf{Cultural transmission with mixed vertical and oblique transmission.}
+When a newborn matures, she will copy her phenotype -- color -- from her mother with probability $\rho$, therefore becoming blue, or from some other female with probability $1-\rho$, in which case her color will depend on the frequency of blue and red adult females.}
+\label{fig:transmission}
+\end{figure*}
 
 % Model
 \section*{Model}
@@ -145,7 +168,7 @@ or as a condition on the difference between $\rho_1$ and $\rho_2$
 
 \begin{figure*}[hbt]
 \centering
-\includegraphics[width=\linewidth]{../figures/{rho1_rho2_k=1}.pdf}
+\includegraphics[width=0.65\linewidth]{../figures/{rho1_rho2_k=1}.pdf}
 \caption{
 \textbf{Protected polymorphism with fluctuating transmission and selection.}
 The positive root $x^*$ of $G(x)$, see eq.~\ref{eq:xstar_periodic_fluc_k=1}.
@@ -270,7 +293,7 @@ where $S_n = \sum_{t=1}^{n}{\rho_t s_t}$, which is a weighted average of the sel
 %}
 
 \bibliographystyle{agsm}
-%\bibliography{/Users/yoavram/Documents/library}
-\bibliography{fluctuating_oblique}
+\bibliography{/Users/yoavram/Documents/library}
+%\bibliography{fluctuating_oblique}
 
 \end{document}  
