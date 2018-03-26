@@ -186,7 +186,7 @@ c &= \rho_B - \rho_A - s\rho_A(1-\rho_B),
 and then $x^*$ is a solution of the quadratic $G(x)=0$. %, given by $x^* = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$.
 The condition \eqref{eq:poly_condition_periodic_fluc}, which guarantees that $0 < x^* < 1$, is equivalent to $c<0$, and therefore it also guarantees that $\sqrt{b^2-4ac} > b$.
 So, if $0<s<1$ (such that $b$ is guaranteed to be positive) then $x^*= \frac{-b+\sqrt{b^2-4ac}}{2a}$.
-\autoref{fig:rho1_rho2_k=1} shows $x^*$, highlighting the area of the parameter space in which a protected polymorphism exists.
+\autoref{fig:rho1_rho2_phase_k=1} shows $x^*$, highlighting the area of the parameter space in which a protected polymorphism exists. The figure demonstrates that the stronger selection is (x-axis), the greater the fluctuations in $\rho$ can be (y-axis) while still maintaining a polymorphic population (area between the dashed lines).
 
 %\begin{align}
 %G(0) = c > 0  \Leftrightarrow \rho_B > \frac{\rho_A(1+s)}{1+\rho_As}, \\
@@ -197,13 +197,13 @@ So, if $0<s<1$ (such that $b$ is guaranteed to be positive) then $x^*= \frac{-b+
 
 \begin{figure*}[htb]
 \centering
-\includegraphics[width=0.65\linewidth]{../figures/{rho1_rho2_k=1}.pdf}
+\includegraphics[width=0.65\linewidth]{../figures/{rho1_rho2_phase_k=1}.pdf}
 \caption{
-\textbf{Protected polymorphism with fluctuating transmission and selection.}
-The positive root $x^*$ of $G(x)$, see~\eqref{eq:xstar_periodic_fluc_k=1}.
-Dashed lines represent, from left to right, $\rho_B=\frac{\rho_A}{1+s(1-\rho_A)}$, $\rho_B=\rho_A$, and $\rho_B=\frac{(1+s)\rho_A}{1+s\rho_A}$, see~\eqref{eq:poly_condition_periodic_fluc}.
-Here, $\rho_A=0.5$, $s=0.1$.}
-\label{fig:rho1_rho2_k=1}
+\textbf{Protected polymorphism.}
+The stable equilibrium of the frequency of phenotype $A$ (\eqref{eq:xstar_periodic_fluc_k=1}) for different selection coefficients ($s$, x-axis) and difference between vertical transmission rates ($\rho_B-\rho_A$, y-axis) when both selection and transmission fluctuate every generation ($k=1$).
+Dashed lines represent $\rho_B=\frac{\rho_A}{1+s(1-\rho_A)}$ and $\rho_B=\frac{(1+s)\rho_A}{1+s\rho_A}$, the limits on $\rho_B-\rho_A$ that allow a protected polymorphism (\eqref{eq:poly_condition_periodic_fluc}).
+Here, $\rho_A=0.5$.}
+\label{fig:rho1_rho2_phase_k=1}
 \end{figure*}
 
 \paragraph{Asymmetric period: $AkBl$.}
@@ -221,8 +221,6 @@ This leads to a condition similar to eq.~20 in~\citet{Ram2018}, but more complex
 \frac{\log{a}}{-\log{\big(b-(\rho_B - \rho_A) s/(1+s)\big)}}.
 \end{equation}
 Therefore, increasing $\rho_B$ the vertical transmission rate specifically when $B$ is favored decreases the environmental period ratio $l/k$ that permits protected polymorphism; decreasing $\rho_B$ will have the opposite effect, increasing the ratio $l/k$ that permits a protected polymorphism.
-
-% TODO plot \rho_B - \rho_A vs s and show the boundaries
 
 % Randomly fluctuating transmission and selection
 \subsection*{Randomly fluctuating transmission and selection}
@@ -285,7 +283,7 @@ The blue and red areas denote expected fixation of $A$ and $B$, respectively (i.
 \includegraphics[width=0.75\linewidth]{../figures/{rho1_rho2_stoch_p}.pdf}
 \caption{
 \textbf{Stochastic local stability.}
-Here, $s_t=s$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-s$ and $\rho_t=\rho_2$ with probability $1-p=0.495$, with $s=0.05$ and $p=0.505$, a combination that allows a stochastic polymorphism with a fixed vertical transmission rate $\rho=0.1$ in~\citet[Fig.~2]{Ram2018}.}
+Here, $s_t=0.05$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-0.05$ and $\rho_t=\rho_2$ with probability $1-p=0.495$, a combination that allows a stochastic polymorphism with a fixed vertical transmission rate $\rho=0.1$ in~\citet[Fig.~2]{Ram2018}.}
 \label{fig:rho1_rho2_stoch_p}
 \end{figure*}
 
