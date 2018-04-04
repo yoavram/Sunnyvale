@@ -260,6 +260,7 @@ Let $w_A, w_B \sim U(0,1)$, $s_t=(w_A-w_B)/w_B$ and $\rho_t \sim \beta(1+s_t, 1)
 The covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 4$); that is, vertical transmission is more likely when $A$ is favored (i.e. $s_t>0$) and oblique transmission is more  likely when $B$ is favored (i.e. $s_t<0$; \autoref{fig:beta}).
 Then $E[log(1+\rho_t s_t)] >0$ and $B$ almost surely doesn't fix, and $E[log(1-\rho_t s_t / (1+s_t)] < 0$, so fixation of $A$ is stochastically locally stable.
 The opposite occurs if $\rho_t \sim \beta(1, 1+s_t)$ and the covariance of $s_t$ and $\rho_t$ is negative ($cov(s_t, \rho_t) \approx -4$). In that case, fixation of $B$ is stochastically locally stable and $A$ almost surely doesn't fix.
+% TODO explain how I calculated 4 and -4
 
 \begin{figure*}[hbt]
 \centering
@@ -286,6 +287,8 @@ The blue and red areas denote expected fixation of $A$ and $B$, respectively (i.
 Here, $s_t=0.05$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-0.05$ and $\rho_t=\rho_2$ with probability $1-p=0.495$, a combination that allows a stochastic polymorphism with a fixed vertical transmission rate $\rho=0.1$ in~\citet[Fig.~2]{Ram2018}.}
 \label{fig:rho1_rho2_stoch_p}
 \end{figure*}
+
+% TODO full correlation between rho and s?
 
 % Finite population size
 \subsection*{Finite population size}
