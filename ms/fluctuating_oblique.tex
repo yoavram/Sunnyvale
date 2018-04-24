@@ -92,7 +92,7 @@ We found that if selection fluctuates between favoring each of the two phenotype
 Furthermore, we found that if the environment changes very rapidly then lower $\rho$ values are likely to evolve, that is, oblique transmission is favored over vertical transmission.
 
 There has been much less theory developed for fluctuating transmission.
-Nevertheless, if we assume that social learning can be affected by ecological and demographic factors, such as the frequency of interactions~\citep{VanSchaik2003}, weather~\citep{Phithakkitnukoon2012}, population size~\citep{Fischer2015} or density~\citep{Aureli1997a}, or stress~\citep{Farine2015}, then it is reasonable that the mode and rate of transmission will fluctuate over time. 
+Nevertheless, if we assume that social learning can be affected by ecological and demographic factors, such as the frequency of interactions~\citep{VanSchaik2003}, weather~\citep{Phithakkitnukoon2012}, population size or density~\citep{Fischer2015,Aureli1997a}, or stress~\citep{Farine2015}, then it is reasonable that the mode and rate of transmission will fluctuate over time.
 For example, \citet{Webster2008} have demonstrated that minnows (small freshwater shoaling fish), increase their reliance on social learning when predation risk increases.
 %For example, it may be the case that during cold seasons offspring are more likely to stay close to their parents and therefore learn vertically, whereas during warm seasons they are more likely to wander and interact with other adults and therefore learn obliquely.
 
@@ -105,7 +105,7 @@ We suggest that cultural evolution can be affected by environmental changes via 
 \includegraphics[width=0.5\linewidth]{../figures/{transmission}.png}
 \caption{
 \textbf{Cultural transmission with mixed vertical and oblique transmission.}
-When a newborn matures, she will copy her phenotype -- color -- from her mother with probability $\rho$, therefore becoming blue, or from some other female with probability $1-\rho$, in which case her color will depend on the frequency of blue and red adult females.}
+When a newborn matures, she copies her phenotype -- color -- from her mother with probability $\rho$, therefore becoming blue, or from some other female with probability $1-\rho$, in which case her color will depend on the frequency of blue and red adult females.}
 \label{fig:transmission}
 \end{figure*}
 
@@ -137,21 +137,21 @@ Therefore, we find that fluctuations in the mode of transmission ($\rho$) withou
 % Periodic fluctuating transmission and selection
 \subsection*{Periodic fluctuating transmission and selection}
 
-Now suppose that both the vertical transmission rate $\rho$ and the selection coefficient $s$ fluctuate together, so that when $A$ is favored the transmission rate is $\rho_A$ when $B$ is favored the transmission rate is $\rho_B$.
-The change in the frequency of $A$ when either $A$ or $B$ is favored is described by $F_A(x)$ and $F_B(x)$, respectively, where
+Now suppose that both the vertical transmission rate $\rho$ and the selection coefficient $s$ fluctuate together, so that when $A$ is favored the transmission rate is $\rho_A$, and when $B$ is favored the transmission rate is $\rho_B$.
+The change in the frequency $x$ of phenotype $A$ when either $A$ or $B$ is favored is described by $F_A(x)$ and $F_B(x)$, respectively,
 \begin{equation}\begin{aligned} \label{eq:recurrence_periodic_fluc}
 F_A(x) = \rho_A \frac{1+s}{1+sx} x + (1-\rho_A)x, \\
-F_B(x) = \rho_B \frac{1}{1+s-sx'} x' + (1-\rho_B)x'.
+F_B(x) = \rho_B \frac{1}{1+s-sx} x' + (1-\rho_B)x.
 \end{aligned}\end{equation}
 
-\paragraph{Symmetric periods: $AkBk$.}
+\paragraph{Symmetric periods -- $AkBk$.}
 We first consider environments which periodically fluctuate between favoring $A$ and $B$ every $k$ generations.
 Using a linear approximation, fixations of $A$ ($x^*=1$) and $B$ ($x^*=0$) are locally stable if, respectively,
 \begin{equation}\begin{aligned}
 \big[F'_A(1) F'_B(1)\big]^k < 1, \\
 \big[F'_A(0) F'_B(0)\big]^k < 1. \\
 \end{aligned}\end{equation}
-and if both of these conditions are not met then there exists a protected polymorphism.
+and if both of these conditions are not met then there exists a \emph{protected polymorphism}.
 So for a protected polymorphism we require
 \begin{equation}
 1 < F'_A(1) F'_B(1) = \Big(1-\rho_A\frac{s}{1+s}\Big)\Big(1+\rho_B s\Big) 
@@ -172,7 +172,7 @@ or as a condition on the difference between $\rho_B$ and $\rho_A$
 \end{equation}
 Surprisingly, the stronger selection is, the larger the difference can be that still allows a stable polymorphism.
 
-\paragraph{Period of one: $A1B1$.}
+\paragraph{Period of one -- $A1B1$.}
 In the case of $k=1$ we can find $x^*$ the frequency of $A$ at the protected polymorphism.
 Denote $F_B(F_A(x))-x = G(x) \cdot x (1-x) \cdot \gamma$ with
 \begin{equation} \begin{aligned} \label{eq:xstar_periodic_fluc_k=1}
@@ -183,9 +183,12 @@ b &= s(1-\rho_A)(2\rho_B - s\rho_A(1-\rho_B)), \\
 c &= \rho_B - \rho_A - s\rho_A(1-\rho_B),
 \end{aligned} \end{equation}
 % $a+b+c>0$.
-and then $x^*$ is a solution of the quadratic $G(x)=0$. %, given by $x^* = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$.
+then $x^*$ is a solution of the quadratic $G(x)=0$. %, given by $x^* = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$.
 The condition \eqref{eq:poly_condition_periodic_fluc}, which guarantees that $0 < x^* < 1$, is equivalent to $c<0$, and therefore it also guarantees that $\sqrt{b^2-4ac} > b$.
-So, if $0<s<1$ (such that $b$ is guaranteed to be positive) then $x^*= \frac{-b+\sqrt{b^2-4ac}}{2a}$.
+So, if $0<s<1$ (such that $b$ is guaranteed to be positive given LHS of eq.~\ref{eq:poly_condition_periodic_fluc}), then 
+\begin{equation}
+x^*= \frac{-b+\sqrt{b^2-4ac}}{2a}.
+\end{equation}
 \autoref{fig:rho1_rho2_phase_k=1} shows $x^*$, highlighting the area of the parameter space in which a protected polymorphism exists. The figure demonstrates that the stronger selection is (x-axis), the greater the fluctuations in $\rho$ can be (y-axis) while still maintaining a polymorphic population (area between the dashed lines).
 
 %\begin{align}
@@ -200,13 +203,13 @@ So, if $0<s<1$ (such that $b$ is guaranteed to be positive) then $x^*= \frac{-b+
 \includegraphics[width=0.65\linewidth]{../figures/{rho1_rho2_phase_k=1}.pdf}
 \caption{
 \textbf{Protected polymorphism.}
-The stable equilibrium of the frequency of phenotype $A$ (\eqref{eq:xstar_periodic_fluc_k=1}) for different selection coefficients ($s$, x-axis) and difference between vertical transmission rates ($\rho_B-\rho_A$, y-axis) when both selection and transmission fluctuate every generation ($k=1$).
-Dashed lines represent $\rho_B=\frac{\rho_A}{1+s(1-\rho_A)}$ and $\rho_B=\frac{(1+s)\rho_A}{1+s\rho_A}$, the limits on $\rho_B-\rho_A$ that allow a protected polymorphism (\eqref{eq:poly_condition_periodic_fluc}).
+The stable equilibrium of the frequency of phenotype $A$ \eqref{eq:xstar_periodic_fluc_k=1} for different selection coefficients ($s$ on x-axis) and size of fluctuations in vertical transmission rates ($\rho_B-\rho_A$ on y-axis) when both selection and transmission fluctuate every generation ($k=1$).
+Dashed lines represent $\rho_B=\frac{\rho_A}{1+s(1-\rho_A)}$ and $\rho_B=\frac{(1+s)\rho_A}{1+s\rho_A}$, the limits on $\rho_B-\rho_A$ that allow a protected polymorphism \eqref{eq:poly_condition_periodic_fluc}.
 Here, $\rho_A=0.5$.}
 \label{fig:rho1_rho2_phase_k=1}
 \end{figure*}
 
-\paragraph{Asymmetric period: $AkBl$.}
+\paragraph{Asymmetric period -- $AkBl$.}
 In the more general case, phenotype $A$ is favored for $k$ generations and phenotype $B$ for $l$ generations, and the transmission rate follows the same cycle such that $\rho=\rho_A$ when $A$ is favored and $\rho=\rho_B$ when $B$ is favored.
 The requirements for a protected polymorphism are now
 \begin{equation}\begin{aligned}
@@ -216,11 +219,11 @@ The requirements for a protected polymorphism are now
 where $a=1+\rho_A s>1$, $b=1-\rho_A\frac{s}{1+s}<1$, and $\Delta \rho = \rho_B - \rho_A$.
 This leads to a condition similar to eq.~20 in~\citet{Ram2018}, but more complex due to the addition of $\Delta \rho$:
 \begin{equation} \label{eq:poly_condition_periodic_fluc_k_l}
-\frac{-\log{b}}{\log{\big(a+(\rho_B - \rho_A) s\big)}} < 
+\frac{-\log{b}}{\log{\big(a + s \Delta \rho \big)}} < 
 \frac{l}{k} < 
-\frac{\log{a}}{-\log{\big(b-(\rho_B - \rho_A) s/(1+s)\big)}}.
+\frac{\log{a}}{-\log{\big(b - s \Delta \rho/(1+s)\big)}}.
 \end{equation}
-Therefore, increasing $\rho_B$ the vertical transmission rate specifically when $B$ is favored decreases the environmental period ratio $l/k$ that permits protected polymorphism; decreasing $\rho_B$ will have the opposite effect, increasing the ratio $l/k$ that permits a protected polymorphism.
+Therefore, increasing the vertical transmission rate specifically when $B$ is favored decreases the environmental period ratio $l/k$ that permits protected polymorphism; decreasing $\rho_B$  will have the opposite effect, increasing the ratio $l/k$ that permits a protected polymorphism.
 
 % Randomly fluctuating transmission and selection
 \subsection*{Randomly fluctuating transmission and selection}
@@ -256,19 +259,18 @@ However, note that symmetry of $s_t$ around zero provides an advantage to phenot
 Therefore, if we take the i.i.d fitness random variables for $A$ and $B$ to be $w_{A,t}, w_{B,t} \sim U(0,1)$, respectively, and define $s_t=(w_{A,t}-w_{B,t})/w_{B,t}$, then neither $A$ nor $B$ has an advantage, on average (i.e. $E[w_{A,t}/w_{B,t}]=E[w_{B,t}/w_{A,t}]$, see \autoref{fig:beta}A), and both $E[\rho_t s_t]$ and $E[-\rho_t s_t/(1+s_t)]$ are positive, so that both fixations are not stochastically locally stable, and we expect the population to converge to a polymorphic distribution.
 
 Second, if $s_t$ and $\rho_t$ are not independent such that $cov(\rho_t, s_t) \ne 0$, we can get fixation.
-Let $w_A, w_B \sim U(0,1)$, $s_t=(w_A-w_B)/w_B$ and $\rho_t \sim \beta(1+s_t, 1)$. 
-The covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 4$); that is, vertical transmission is more likely when $A$ is favored (i.e. $s_t>0$) and oblique transmission is more  likely when $B$ is favored (i.e. $s_t<0$; \autoref{fig:beta}).
+Let $w_{A,t}, w_{B,t} \sim U(0,1)$, $s_t=(w_{A,t}-w_{B,t})/w_{B,t}$ and $\rho_t \sim Beta(1+s_t, 1)$ (a beta distribution with parameters $1+s_t$ and $1$). 
+The covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 4$; estimated by averaging $10^8$ random values of $s_t$ and $\rho_t$); that is, vertical transmission is more likely when $A$ is favored (i.e. $s_t>0$) and oblique transmission is more  likely when $B$ is favored (i.e. $s_t<0$; \autoref{fig:beta}).
 Then $E[log(1+\rho_t s_t)] >0$ and $B$ almost surely doesn't fix, and $E[log(1-\rho_t s_t / (1+s_t)] < 0$, so fixation of $A$ is stochastically locally stable.
 The opposite occurs if $\rho_t \sim \beta(1, 1+s_t)$ and the covariance of $s_t$ and $\rho_t$ is negative ($cov(s_t, \rho_t) \approx -4$). In that case, fixation of $B$ is stochastically locally stable and $A$ almost surely doesn't fix.
-% TODO explain how I calculated 4 and -4
 
 \begin{figure*}[hbt]
 \centering
 \includegraphics[width=\linewidth]{../figures/{beta}.png}
 \caption{
 \textbf{Covariance of selection and transmission.}
-\textbf{(A)} Histogram of $w_A/w_B$ where $w_A$ and $w_B$ are identically and independently distributed uniform random variables $U(0,1)$.
-\textbf{(B)} Histogram of $s_t = (w_A-w_B)/w_B$.
+\textbf{(A)} Histogram of $w_{A,t}/w_{B,t}$ where $w_{A,t}$ and $w_{B,t}$ are identically and independently distributed uniform random variables $U(0,1)$.
+\textbf{(B)} Histogram of $s_t = (w_{A,t}-w_{B,t})/w_{B,t}$.
 \textbf{(C)} Histogram of $\rho_t \sim Beta(1+s_t, 1)$.
 \textbf{(C)} The joint distribution of $\rho_t$ and $s_t$ demonstrates a positive correlation $cov(s_t, \rho_t)>0$.
 }
@@ -284,7 +286,9 @@ The blue and red areas denote expected fixation of $A$ and $B$, respectively (i.
 \includegraphics[width=0.75\linewidth]{../figures/{rho1_rho2_stoch_p}.pdf}
 \caption{
 \textbf{Stochastic local stability.}
-Here, $s_t=0.05$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-0.05$ and $\rho_t=\rho_2$ with probability $1-p=0.495$, a combination that allows a stochastic polymorphism with a fixed vertical transmission rate $\rho=0.1$ in~\citet[Fig.~2]{Ram2018}.}
+Here, $s_t=0.05$ and $\rho_t=\rho_1$ with probability $p=0.505$ and $s_t=-0.05$ and $\rho_t=\rho_2$ with probability $1-p=0.495$.
+The diagonal represents the case of no transmission fluctuations; \citet[Fig.~2]{Ram2018} demonstrated that with a constant transmission rate $\rho=0.1$ and the above distribution of $s_t$, both fixations are not stochastically stable.
+}
 \label{fig:rho1_rho2_stoch_p}
 \end{figure*}
 
@@ -297,13 +301,20 @@ To include the effects of random genetic drift due to finite population size in 
 In~\citet{Ram2018} only selection fluctuated via $s_t$, but here we also let transmission to fluctuate via $\rho_t$. 
 
 We find a result similar to Result 11 from~\citet{Ram2018}:
-The mean $\mu(x)$ and variance $\sigma^2(x)$ of the change in the frequency of $A$ in the case of a cycling environment $AkBl$, where $k+l=n$, are
-\begin{equation}
+The mean $\mu(x)$ and variance $\sigma^2(x)$ of the change in the frequency $x$ of phenotype $A$ in the case of a cycling environment $AkBl$, where $k+l=n$, are
+\begin{equation} \label{eq:drift_diffusion_terms}
 \mu(x) = S_n x(1-x)
 \quad \text{and} \quad
 \sigma^2(x) = n x (1-x),
 \end{equation}
-where $S_n = \sum_{t=1}^{n}{\rho_t s_t}$, which the sum of selection coefficients in favor of phenotype $A$ over $n$ generations weighted by the vertical transmission rate $\rho_t$.
+where $S_n = \sum_{t=1}^{n}{\rho_t s_t}$.
+Furthermore, combining \eqref{eq:drift_diffusion_terms} with eqs.~46-47 from \citep{Ram2018}, we find that the fixation probability of phenotype $A$, starting with frequency $x$ of phenotype $A$, is
+\begin{equation}
+u(x) = \frac{1 - e^{-2 \frac{S_n}{n} x}}{1 - e^{-2 \frac{S_n}{n}}}.
+\end{equation}
+From Result 10 in \citep{Ram2018}, $u(x)$ is monotone increasing in $S_n/n$ which is the average selection coefficient of $A$ weighted by the vertical transmission rates $\rho_t$.
+Therefore, if $s_t$ and $\rho_t$ are positively (negatively) correlated, $S_n/n$ increases (decreases), and the fixation probability $u(x)$ increases (decreases). 
+This occurs because selection only affects those individuals that transmit their phenotype to their own offspring (i.e. vertically), and a fraction $1-\rho_t$ of the population individuals is effectively masked (for better or worse) from selection at each generation.
 
 
 % Discussion
