@@ -97,7 +97,7 @@ For example, \citet{Webster2008} have demonstrated that minnows (small freshwate
 %For example, it may be the case that during cold seasons offspring are more likely to stay close to their parents and therefore learn vertically, whereas during warm seasons they are more likely to wander and interact with other adults and therefore learn obliquely.
 
 Here, we analyze a model in which individuals learn from their parents with probability $\rho$ (vertical transmission), and from non-parental adults with probability $1-\rho$ (oblique transmission), where $\rho$ fluctuates over time~(\autoref{fig:transmission}).
-We find that $\ldots$ %TODO
+We find that $\ldots$ (to be continued)  %TODO
 We suggest that cultural evolution can be affected by environmental changes via both selection and transmission fluctuations, and that further empirical and theoretical studies are required to disentangle these effects.
 
 \begin{figure*}[h]
@@ -316,13 +316,52 @@ From Result 10 in \citep{Ram2018}, $u(x)$ is monotone increasing in $S_n/n$ whic
 Therefore, if $s_t$ and $\rho_t$ are positively (negatively) correlated, $S_n/n$ increases (decreases), and the fixation probability $u(x)$ increases (decreases). 
 This occurs because selection only affects those individuals that transmit their phenotype to their own offspring (i.e. vertically), and a fraction $1-\rho_t$ of the population individuals is effectively masked (for better or worse) from selection at each generation.
 
+% Fluctuations in space
+\subsection*{Fluctuations in space}
+
+We now describe a model in which fluctuations in selection and transmission occur in space, rather then time; that is, we model a population divided to two demes.
+Selection (e.g. reproduction) and transmission (e.g. learning, development) occur within the demes, followed by migration of sub-adults -- individuals that already acquired their phenotype but have yet to reproduce.
+The frequency of phenotype $A$ in deme $j$ is marked by $x_j$, and therefore after selection and transmission the frequencies are 
+\begin{equation} \label{eq:migration_model_selection_transmission}
+x_j' = \rho_j \frac{w_j}{\overline{w}_j} x_j + (1-\rho_j) x_j,
+\end{equation}
+where $w_j$ is the fitness of phenotype $A$ in deme $j$ relative to the fitness of phenotype $B$; $\overline{w}_j=w_j x_j + (1-x_j)$ is the population mean fitness in deme $j$; and $\rho_j$ is the vertical transmission rate in deme $j$.
+
+Following migration, the frequencies of $A$ in the two demes are
+\begin{equation} \label{eq:migration_model}
+\begin{aligned}
+x_1'' = (1-m_1) x_1' + m_2 x_2', \\
+x_2'' = m_1 x_1' + (1-m_2) x_2',
+\end{aligned}
+\end{equation}
+where $m_j$ is the migration rate out of deme $j$. 
+
+\autoref{fig:migration} shows the stable frequencies of phenotype $A$ (i.e. the frequencies that solve $x_1=x_1''$ and $x_2=x_2''$) and the stable population mean fitnesses in the two demes with symmetric selection such that $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar intensities (see figure legend).
+Notably, without oblique transmission (left column), migration decreases the differences between the demes and reduces the population mean fitnesses.
+With some oblique transmission, but equal in both demes, results are similar (not shown).
+However, if oblique transmission is stronger in deme 2 compared to deme 1 (middle and right columns), the stable frequency of $A$ increases in both demes.
+Therefore, the mean fitness in deme 1 decreases to a lesser extend than in deme 2, and even increases when the migration rate is high enough.
+Furthermore, the polymorphism that is protected when transmission rates are equal disappears when transmission rates differ and migration is strong enough, and phenotype $A$ fixes (see right side of right column).
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/migration.pdf}
+\caption{
+\textbf{Oblique transmission and migration.} 
+The figure shows $x^*_i$ the stable frequency of $A$ (top row) and $\bar{w}^*_i$ population mean fitness (bottom row) in the two demes.
+Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype 2 is $1$ in both demes).
+The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2=1$, $0.8$, and $0.25$, in the left, middle, and right columns, respectively.
+Migration rate $m$ is on the x-axis.
+}
+\label{fig:migration}
+\end{figure*}
 
 % Discussion
 \section*{Discussion}
 
 Models of cultural transmission mostly assume a fixed relative rate at which different modes of transmission -- vertical, horizontal, or oblique -- occur.
 Here we explored a model in which the relative rate of vertical and oblique transmission fluctuates over time, either periodically or randomly. 
-Comparing our results with previous results from a similar model with a fixed rate~\citep{Ram2018}, we find that $\ldots$ % TODO
+Comparing our results with previous results from a similar model with a fixed rate~\citep{Ram2018}, we find that $\ldots$ (to be continued) % TODO
 %Specifically, if fluctuations are not small then a single phenotype is likely to fix in the population~(\autoref{eq:poly_condition_periodic_fluc}, \autoref{fig:rho1_rho2_k=1}, \autoref{fig:rho1_rho2_stoch_p}), and 
 
 One caveat of our model is the use of the ``phenotypic gambit'' -- the assumption that the transmission mode itself is strictly vertically transmitted.
