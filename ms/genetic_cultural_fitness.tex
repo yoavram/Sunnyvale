@@ -1,5 +1,4 @@
-\documentclass[12pt]{article} % Default font size of the document, change to 10pt to fit more text
-
+\documentclass[14pt]{extarticle}
 \usepackage{geometry}
 \geometry{
 a4paper,
@@ -8,6 +7,7 @@ left=20mm,
 top=20mm,
 headheight=12pt
 }
+
 \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}
 \usepackage{amssymb,amsmath,amsthm}
@@ -97,14 +97,17 @@ x' = \rho x \frac{w_A}{\bar w} + (1-\rho) x \frac{v_A}{\bar v}
 where $\bar w = x w_A + (1-x) w_B$ is the population mean genetic fitness and $\bar v = x v_A + (1-x) v_B$ is the population mean cultural fitness. 
 Note that if $v_A = v_B$ then \eqref{eq:recurrence} simplifies to 
 $x' = \rho x \frac{w_A}{\bar w} + (1-\rho) x$,
-which is eq.~2 from~\citet{Ram2018}.
-So setting $v_A = v_B = \rho$ or even to so other parameter $v_A = v_B = \tau$ will not provide new insight.
+which is eq.~2 from~\citet{Ram2018}, so we hereafter assume that $v_A \ne v_B$.
 
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Constant environment}
+\subsection*{Equilibrium.}
 
 In a constant environment we will assume, without loss of generality, that $w_A > w_B$.
-We will now find the equilibrium phenotype frequencies.
-Setting $x'=x$ in~\eqref{eq:recurrence} and rearranging, we get a cubic polynomial $ax^3+bx^2+cx$.
+To find the phenotype equilibrium frequencies,
+set $x'=x$ in~\eqref{eq:recurrence} and rearrange to get a cubic polynomial $a_3x^3+a_2x^2+a_1x$.
 %\begin{equation}
 %\begin{aligned}
 %G(x) &= a x^3 + b x^2 +c x, \quad \text{where} \\
@@ -113,63 +116,124 @@ Setting $x'=x$ in~\eqref{eq:recurrence} and rearranging, we get a cubic polynomi
 %c &= -w_B(v_A - v_B) - \rho (w_A v_B - w_B v_A).  
 %\end{aligned}
 %\end{equation}
-Two roots are easy to verify: $x=0 \Rightarrow x'=0$ and $x=1 \Rightarrow x'=\rho \frac{w_A}{w_A} + (1-\rho) \frac{v_A}{v_A} = 1$. 
-Therefore, the cubic polynomial is $x (1-x) (x^*-x)$ where
-\begin{equation}
-%\begin{aligned}
-x^* = 
+Two roots are easy to verify: $x=0$ and $x=1$
+% \Rightarrow x'=0$ and $x=1 \Rightarrow x'=\rho \frac{w_A}{w_A} + (1-\rho) \frac{v_A}{v_A} = 1$. 
+Therefore, the cubic polynomial is $x (1-x) (x^*-x)$ and the three roots are
+\begin{align} \label{eq:roots}
+&x = 0 \\
+&x = 1 \\
+&x^* = 
 %\frac{w_B v_B - (1-\rho) w_B v_A - \rho w_A v_B}{w_A v_A - w_A v_B - w_B v_A + w_B v_B} = \\
-\rho \frac{w_B v_A - w_A v_B}{(w_A - w_B)(v_A - v_B)} - \frac{w_B}{w_A-w_B}.
-%\end{aligned}
-\end{equation}
-%The conditions for $0 < x^* < 1$ are:
-%\begin{equation}
-%\begin{aligned}
-%\frac{w_B (v_A - v_B)}{w_B v_A - w_A v_B}  < 
-%\rho < 
-%\frac{w_A (v_A - v_B)}{w_B v_A - w_A v_B} \\
-%\end{aligned}
-%\end{equation}
-
-Now, $x=0$ is unstable if
-\begin{equation}
-%\frac{x'}{x} \eqsim 
-\rho \frac{w_A}{w_B} + (1-\rho) \frac{v_A}{v_B} > 1,
-\end{equation}
-and $x=1$ is unstable if
-\begin{equation}
-%\frac{(1-x)'}{1-x} \eqsim 
-\rho \frac{w_B}{w_A} + (1-\rho) \frac{v_B}{v_A} > 1.
+%\rho \frac{w_B v_A - w_A v_B}{(w_A - w_B)(v_A - v_B)} - \frac{w_B}{w_A-w_B} = 
+\frac{\rho s_w + (1-\rho) s_v}{s_w s_v},
+\end{align}
+where $1+s_w=\frac{w_A}{w_B}>1$ and $1+s_v=\frac{v_A}{v_B}>0$ (note this assumes that $s_w, s_v > -1$).
+%Note that $x^*$ might be larger than 1 or less than 0, in which case it is not an equilibrium frequency.
+%Note that $x^*<1$ iff $\rho \frac{w_A}{w_A-w_B} > (1-\rho) \frac{v_A}{v_B-v_A}$, 
+%and $x^*>0$ iff $\frac{\rho}{1-\rho} > |\frac{s_v}{s_w}|$.
+For $x^*$ to be a valid equilibrium frequency, it must be between 0 and 1, which implies the following conditions
+\begin{equation} \label{eq:xstar_conditions}
+\begin{cases}
+0 < \rho < \frac{-s_v}{s_w - s_v},& \quad \text{if}\; s_w > 0 > s_v > -1,\\
+0 < \rho < 1,& \quad \text{if}\; s_w > s_v > 0 \\
+0 < \rho < \frac{s_v}{s_v - s_w},& \quad \text{if}\; s_v > s_w > 0
+\end{cases}
 \end{equation}
 
-So both $x=0$ and $x=1$ are unstable if
-\begin{equation} \label{eq:protected_poly_const}
-w_B(v_B - v_A) < \rho (w_A v_B - w_B v_A) < w_A(v_B - v_A),
+Now, $x=0$ is locally stable if 
+\begin{equation}
+\frac{x'}{x} \eqsim 
+\rho (1+s_w) + (1-\rho) (1+s_v)
 \end{equation}
-in which case there exists a protected phenotypic polymorphism $0 < x^* < 1$.
+is less than 1 and unstable if it is larger than 1.
+Similarly, $x=1$ is locally stable if 
+\begin{equation}
+\frac{(1-x)'}{1-x} \eqsim 
+\rho \frac{1}{1+s_w} + (1-\rho) \frac{1}{1+s_v}
+\end{equation}
+is less than 1 and unstable if it is larger than 1.
+This implies the following conditions for the instability of both $x=0$ and $x=1$:
+\begin{equation} \label{eq:fixation_instability_conditions}
+\begin{cases}
+\frac{-s_v}{s_w - s_v} < \rho < (1+s_w) \frac{-s_v}{s_w - s_v},& \quad \text{if}\; s_w > 0 > s_v > -1,\\
+\text{n.a.},& \quad \text{if}\; s_w > s_v > 0 \\
+\text{n.a.},& \quad \text{if}\; s_v > s_w > 0
+\end{cases}
+\end{equation}
+ 
+Therefore, although a polymorphism fixed point exists~\eqref{eq:xstar_conditions}, it cannot be stable, because whenever it exists at least one of the fixations (in either $A$ or $B$) is stable~\eqref{eq:fixation_instability_conditions}.
 
-There are three possibilities (disregarding equalities):
-\begin{enumerate}
-\item If $v_A > v_B$ and $\frac{w_A}{w_B} > \frac{v_A}{v_B}$ then condition~\eqref{eq:protected_poly_const} cannot apply as it requires $\rho<0$.
-\item If $v_A > v_B$ and $\frac{w_A}{w_B} < \frac{v_A}{v_B}$ then condition~\eqref{eq:protected_poly_const} cannot apply as it requires $\rho>1$.
-\item If $v_B > v_A$ then $w_A v_B - w_B v_A > 0$, $w_B(v_B - v_A)<w_A v_B - w_B v_A$, and $w_A v_B - w_B v_A > w_A(v_B - v_A)$ and condition~\eqref{eq:protected_poly_const} applies, ensuring a protected phenotypic polymorphism, if
+%TODO - when is x=1 stable? When is x=0 stable?
+
+\subsection*{Finite population.}
+To model the effect of random drift due to a finite population size $N$, we use a Wright-Fisher model.
+Let $X_t$ denote the number of $A$ individuals at generation $t$ ($X_t \in \{0, 1, \ldots, N\}$) so that $x=X_t/N$.
+$x'$ still represents the frequency of $A$ in the next generation as in~\eqref{eq:recurrence}.
+According to the Wright-Fisher model~\citep{Ewens2004}, the number of $A$ individuals in generation $(t+1)$ is binomially distributed:
 \begin{equation}
-\frac{w_B(v_B - v_A)}{w_A v_B - w_B v_A} < \rho < \frac{w_A(v_B - v_A)}{w_A v_B - w_B v_A},
+X_{t+1} \sim Bin(N, x').
 \end{equation}
-which can also be written as 
+The stochastic process $X_t$ has two absorbing states $X_t=0$ and $X_t=N$, corresponding to the two fixations in $A$ and $B$, respectively.
+When one of the fixations is globally stable in the deterministic model~\eqref{eq:recurrence}, we are interested in the fixation probability $u(x)$ and time $T(x)$ starting from an arbitrary frequency $x$ and towards the stable absorbing state (either $x=0$ or $x=1$).
+When a protected polymorphism exists, we are interested in the probabilities $u_0(x)$ and $u_1(x)$ for fixation towards $x=0$ or $x=1$, respectively, and the time for loss of polymorphism $T(x)$, or the fixation in either $x=0$ or $x=1$.
+
+To proceed, we use a diffusion approximation, which requires that the differential selection (genetic or cultural) is small, or formally~\citep{Karlin1974a}
 \begin{equation}
-\frac{-s_v}{s_w-s_v} 
-< \rho < 
-(1+s_w) \cdot \frac{-s_v}{s_w-s_v},
+w_A - w_B \eqsim \frac{\eta_w}{N}, \quad v_A - v_B \eqsim \frac{\eta_v}{N},
 \end{equation}
-where $s_w=\frac{w_A}{w_B}-1>0$ and $s_v=\frac{v_A}{v_B}-1<0$.
-\end{enumerate}
+up to terms of order smaller than $1/N$.
+Therefore, the infinitesimal mean displacement is
+\begin{equation}
+\mu(x)=\frac{1}{N}\E[X_{t+1}-X_t]=x(1-x) \eta
+\end{equation}
+where $\eta = \rho \eta_w + (1-\rho) \eta_v$.
+The infinitesimal variance $\sigma^2(x)$ is
+\begin{equation}
+\sigma^2(x)=\frac{1}{N^2}Var[X_{t+1}-X_t]=x(1-x),
+\end{equation}
+up to terms of order smaller than $1/N$.
+
+%We start with the case that $x=1$ is a stable equilibrium.
+%, that is, either $\eta>0$ and $\eta_v>0$ or $\eta_w>0$, $\eta_v<0$, and $\rho > (1+s_w)\frac{-s_v}{s_w-s_v}$.
+Therefore, the probability for fixation of $A$ (i.e. at $x=1$), starting with frequency $x$, is
+\begin{equation} \label{eq:uA(x)}
+u_A(x) = \frac{1-e^{-2 \eta x}}{1-e^{-2\eta}},
+\end{equation}
+and $u_B(x) = 1-u_A(x)$ is the probability for fixation of $B$ (i.e. at $x=0$).
+The time to fixation at either $A$ or $B$ (starting with frequency $x$) is 
+\begin{equation} \label{eq:T(x)}
+T(x) = 
+\frac{1-u(x)}{\eta} \int_0^x{\frac{e^{2 \eta z} - 1}{z(1-z)} dz} + 
+\frac{u(x)}{\eta} \int_x^1{\frac{1-e^{-2 \eta (1-z)}}{z(1-z)} dz}
+\end{equation}
+where $u_A(x)$ is given in~\eqref{eq:uA(x)}, and $T(x)$ is measured in units of $1/N$.
+
+For the fixation probability $u(x)$, we have the following result.
+First, note that $u(x)$ is monotone increasing in $\eta$~\cite[see][Appendix E]{Ram2018}. 
+Next, $\frac{d\eta}{d\rho} = \eta_w - \eta_v$ and therefore $u(x)$ is monotone increasing (decreasing) in $\rho$ when $\eta_w > \eta_v$ ($\eta_w < \eta_v$). 
+That is, if the genetic fitness differential is bigger than the cultural fitness differential, then the probability of fixation increases with the vertical transmission rate; if the cultural fitness differential is bigger, than the fixation probability decreases with the vertical transmission rate.
+
+
+We are specifically interested in the probability for stochastic fixation of $A$ (rather than $B$) starting at the (unstable) equilibrium polymorphism $x=x^*$ in~\eqref{eq:roots} (i.e. assuming $\eta_w>0$, $\eta_v<0$, and~\eqref{eq:fixation_instability_conditions}).
+
+First, assuming $w_B \eqsim v_B \eqsim 1$ we have $\eta_w \eqsim s_w$ and $\eta_v \eqsim s_v$, so $\eta<0$ and $x^*=\eta / \eta_v \eta_w$~(from \eqref{eq:roots}) and we have
+\begin{equation} \label{eq:uA(x*)}
+u_A(x^*) = \frac{1-e^{-2 \eta^2/\eta_v \eta_w}}{1-e^{-2\eta}},
+\end{equation}
+Similarly, the time for loss of polymorphism when starting at the stable polymorphism $x=x^*$ under the same assumptions is
+\begin{equation} \label{eq:T(x*)}
+T(x^*) = 
+\frac{1-u(x^*)}{\eta} \int_0^{x^*}{\frac{e^{2 \eta z} - 1}{z(1-z)} dz} + 
+\frac{u(x^*)}{\eta} \int_{x^*}^1{\frac{1-e^{-2 \eta (1-z)}}{z(1-z)} dz}
+\end{equation}
+
+
 
 %\section*{Acknowledgements.}
 
 %%%%%%%%%%%%%%%%%%%
 \bibliographystyle{unsrtnat}
-%\bibliography{/Users/yoavram/Documents/library}
-\bibliography{genetic_cultural_fitness}
+\bibliography{/Users/yoavram/Documents/library}
+%\bibliography{genetic_cultural_fitness}
 %%%%%%%%%%%%%%%%%%%
 \end{document}  
