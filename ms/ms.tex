@@ -92,13 +92,13 @@ We found that if selection fluctuates between favoring each of the two phenotype
 Furthermore, we found that if the environment changes very rapidly then lower $\rho$ values are likely to evolve, that is, oblique transmission is favored over vertical transmission.
 
 There has been much less theory developed for fluctuating transmission.
-Nevertheless, if we assume that social learning can be affected by ecological and demographic factors, such as the frequency of interactions~\citep{VanSchaik2003}, weather~\citep{Phithakkitnukoon2012}, population size or density~\citep{Fischer2015,Aureli1997a}, or stress~\citep{Farine2015}, then it is reasonable that the mode and rate of transmission will fluctuate over time.
+Nevertheless, if we assume that social learning can be affected by ecological and demographic factors, such as the frequency of interactions~\citep{VanSchaik2003}, weather~\citep{Phithakkitnukoon2012}, population size or density~\citep{Fischer2015,Aureli1997a}, or stress~\citep{Farine2015}, then it is reasonable that the mode and rate of transmission will fluctuate over time and/or space.
 For example, \citet{Webster2008} have demonstrated that minnows (small freshwater shoaling fish), increase their reliance on social learning when predation risk increases.
 %For example, it may be the case that during cold seasons offspring are more likely to stay close to their parents and therefore learn vertically, whereas during warm seasons they are more likely to wander and interact with other adults and therefore learn obliquely.
 
-Here, we analyze a model in which individuals learn from their parents with probability $\rho$ (vertical transmission), and from non-parental adults with probability $1-\rho$ (oblique transmission), where $\rho$ fluctuates over time~(\autoref{fig:transmission}).
+Here, we analyze a model in which individuals learn from their parents with probability $\rho$ (vertical transmission), and from non-parental adults with probability $1-\rho$ (oblique transmission), where $\rho$ fluctuates over time or space~(\autoref{fig:transmission}).
 We find that $\ldots$ (to be continued)  %TODO
-We suggest that cultural evolution can be affected by environmental changes via both selection and transmission fluctuations, and that further empirical and theoretical studies are required to disentangle these effects.
+We suggest that cultural evolution can be affected by environmental heterogeneity via both selection and transmission fluctuations, and that further empirical and theoretical studies are required to disentangle these effects.
 
 \begin{figure*}[h]
 \centering
@@ -336,23 +336,39 @@ x_2'' &= m_1 x_1' + (1-m_2) x_2',
 \end{equation}
 where $0 \le m_j \le 1/2$ is the migration rate out of deme $j$. 
 
-For the simplified case of unconditional migration $m_1=m_2=m$ \citep{McPeek1992} and symmetric selection $w_1=1/w_2=w>1$, the equilibrium $(x_1^*, x_2^*)$ solves
+\paragraph{Unconditional migration and symmetric selection.}
+ 
+For the simplified case of unconditional migration $m_1=m_2=m$ \citep{McPeek1992} and symmetric selection $w_1=1/w_2=w>1$, the model is given by
 \begin{equation}\begin{aligned} \label{eq:migration_model_unconditional_symmetric}
-x_1 &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_w} x_2 + 1-\rho_2 \Big), \\
-x_2 &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_w} x_2 + 1-\rho_2 \Big).
+x_1'' &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_w} x_2 + 1-\rho_2 \Big), \\
+x_2'' &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_w} x_2 + 1-\rho_2 \Big).
 \end{aligned}
 \end{equation}
 
-With only oblique transmission ($\rho_1=\rho_2=0$), the solutions to \eqref{eq:migration_model_unconditional_symmetric} are the neutral equilibria $(x^*,x^*)$ for any $0 \le x^* \le 1$.
-With only vertical transmission ($\rho_1=\rho_2=1$), the solutions to \eqref{eq:migration_model_unconditional_symmetric} are $(0,0)$, $(1,1)$ and the polymorphic solution
+we have the following results:
+\begin{itemize}
+\item With only oblique transmission ($\rho_1=\rho_2=0$), the only equilibria are the neutral equilibria $(x^*,x^*)$ for any $0 \le x^* \le 1$.
+\item With only vertical transmission ($\rho_1=\rho_2=1$), the fixation equilibria  $(0,0)$, $(1,1)$ are unstable and there exists a protected polymorphism
 \begin{equation}
-\begin{aligned} \label{eq:migration_model_unconditional_symmetric_solution}
+\begin{aligned} \label{eq:migration_model_unconditional_symmetric_polymorphism}
 x_1^* &= \frac{w-1-m(w+1) + \sqrt{\Delta}}{2(w-1)}, \\
 x_2^* &= 1-x_1^*,
 \end{aligned}
 \end{equation}
 where $\Delta = m^2(w+1)^2+(1-2m)(w-1)^2$.
-Examining the stability of these equilibria, the characteristic polynomial of the Jacobian is the same for both fixation equilibria $(0,0)$ and $(1,1)$ and is given by $a \lambda^2 + b \lambda + c$ with
+\item With only vertical transmission in one deme ($\rho_1=1$) and a combination of both vertical and oblique transmission in the other deme ($\rho_2=\rho$), fixation of $B$ is unstable, and fixation of $A$ is stable if and only if the vertical transmission rate in deme 2 is below $\hat \rho$, where
+\begin{equation} \label{eq:migration_model_unconditional_symmetric_condition_rho}
+\rho < \hat \rho = \frac{m}{m+(1-m)(w-1)},
+\end{equation}
+or if the migration rate is above $\hat m$, where
+\begin{equation} \label{eq:migration_model_unconditional_symmetric_condition_m}
+m > \hat m = \frac{\rho (w-1)}{\rho (w-1) +1-\rho}.
+\end{equation}
+\end{itemize}
+
+\paragraph{Proof.}
+
+Examining the stability of the equilibria when $\rho_1=\rho_2=1$, the characteristic polynomial of the Jacobian is the same for both fixation equilibria $(0,0)$ and $(1,1)$ and is given by $a \lambda^2 + b \lambda + c$ with
 \begin{equation}
 \begin{aligned}
 a &= 1, \quad
@@ -360,9 +376,9 @@ b &= -\frac{(1-m)(w^2+1)}{w}, \quad
 c &=  1-2m.
 \end{aligned}
 \end{equation}
-Since $a>0$, $b<0$, and $c>0$, and because $a+b+c=-\frac{1-m}{w}(w-1)^2<0$, the leading eigenvalue is positive, both equilibria are unstable, and the protected polymorphism exists and is given by~\eqref{eq:migration_model_unconditional_symmetric_solution}.
+Since $a>0$, $b<0$, and $c>0$, and because $a+b+c=-\frac{1-m}{w}(w-1)^2<0$, the leading eigenvalue is positive, both equilibria are unstable, and the protected polymorphism exists and is given by~\eqref{eq:migration_model_unconditional_symmetric_polymorphism}.
 
-With only vertical transmission in one deme ($\rho_1=1$) and a combination of both vertical and oblique transmission in the other deme ($\rho_2=\rho$), the stability of $(0,0)$ is determined by a characteristic polynomial with coefficients
+When $\rho_1=1$ and $\rho_2=\rho$, the stability of $(0,0)$ is determined by a characteristic polynomial with coefficients
 \begin{equation}
 \begin{aligned}
 a &= 1, \quad
@@ -374,7 +390,8 @@ Again, $a>0$ and $c>0$   and stability can be analyzed by the sign of $a+b+c$.
 For $\rho=1$ we already have $a+b+c<0$.
 For $\rho=0$ we have $a+b+c=-m(w-1)<0$.
 Finally, $a+b+c$ is a linear function of $\rho$ and therefore $a+b+c<0$ for any valid $\rho$, the leading eigenvalue is positive, and $(0,0)$ is unstable.
-Regarding the stability of $(1,1)$, which is determined by a characteristic polynomial  with coefficients
+
+The stability of $(1,1)$ is determined by a characteristic polynomial  with coefficients
 \begin{equation}
 \begin{aligned}
 a &= 1, \quad
@@ -383,29 +400,32 @@ c &= \frac{1-2m}{w} (w\rho+1-\rho).
 \end{aligned}
 \end{equation}
 Once more, $a>0$, $b<0$, and $c>0$, and if $\rho=1$ then $a+b+c<0$, as before.
-However, for $\rho=0$ we have $a+b+c = \frac{m}{w}(w-1)>0$, in which case the stability is determined by $2a+b=\frac{m(w+1)+w-1}{w}$, the derivative of the polynomial at $\lambda=1$, which is positive, and therefore both eigenvalues occur at $(0,1)$ and the fixation is stable.
-We can also determine the rate $\hat \rho$ for which $a+b+c=0$, such that for
-\begin{equation} \label{eq:migration_model_unconditional_symmetric_condition_rho}
+However, for $\rho=0$ we have $a+b+c = \frac{m}{w}(w-1)>0$, in which case the stability is determined by $2a+b=\frac{m(w+1)+w-1}{w}$, the derivative of the polynomial at $\lambda=1$, which is positive, and therefore both eigenvalues occur in $(0,1)$ and the fixation is stable.
+
+For any given $\rho$, $a+b+c>0$ if and only if
+\begin{equation}
 \rho < \hat \rho = \frac{m}{m+(1-m)(w-1)}
 \end{equation}
-the fixation $(1,1)$ is stable if and only if $2a+b>0$.
+and then $(1,1)$ is stable if and only if $2a+b>0$.
 We already found that when $\rho=0$ we have $2a+b>0$.
 When $\rho = \hat \rho$, we have $2a+b=\frac{m(w+1)+w-1}{w(1-m)(w-1)}>0$.
 Since $2a+b$ is linear in $\rho$, we find that $2a+b>0$ for $\hat \rho \le \rho \le 0$ and therefore \eqref{eq:migration_model_unconditional_symmetric_condition_rho} guarantees the stable fixation of $A$.
 
-A similar condition can be found for $m$: the value of $a+b+c$ at $m=0$ and $m=1$ is $-\frac{\rho(w-1)^2}{w}<0$ and $\frac{(1-\rho)(w-1)}{w}>0$, respectively, and $a+b+c$ is linear in $m$, so that we have $a+b+c>0$ when 
-\begin{equation} \label{eq:migration_model_unconditional_symmetric_condition_m}
+For $m$, the value of $a+b+c$ at $m=0$ and $m=1$ is $-\frac{\rho(w-1)^2}{w}<0$ and $\frac{(1-\rho)(w-1)}{w}>0$, respectively, and $a+b+c$ is linear in $m$, so that we have $a+b+c>0$ when 
+\begin{equation}
 m > \hat m = \frac{\rho (w-1)}{\rho (w-1) +1-\rho}.
 \end{equation}
 In addition, $2a+b$ is linear in $m$ and equal to 2 when $m=1$; it is equal to zero when $m=(w-1)(w\rho-1)/(w(w-1)\rho+w+1) < \hat m$, and therefore \eqref{eq:migration_model_unconditional_symmetric_condition_m} is sufficient for stability of fixation of $A$.
 
-\autoref{fig:migration_rho} and \autoref{fig:migration_m} show the stable frequencies of phenotype $A$ (i.e. the frequencies that solve \eqref{eq:migration_model_unconditional_symmetric_solution}) and the stable population mean fitnesses in the two demes with symmetric selection such that $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar intensities (see figure legend).
+\paragraph{Examples.}
+
+\autoref{fig:migration_rho} and \autoref{fig:migration_m} show the stable frequencies of phenotype $A$~ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) and the stable population mean fitnesses in the two demes with symmetric selection such that $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar intensities.
 Notably, without oblique transmission (\autoref{fig:migration_m}, left column), migration decreases the differences between the demes and reduces the population mean fitnesses.
 With some oblique transmission, but equal in both demes, results are similar (not shown).
 However, if oblique transmission is stronger in deme 2 compared to deme 1 (\autoref{fig:migration_m}, middle and right columns), the stable frequency of $A$ increases in both demes.
 Therefore, the mean fitness in deme 1 decreases to a lesser extent than in deme 2, and even increases when the migration rate is high enough.
 
-The polymorphism $(x_1^*, x_2^*)$ is protected when transmission rates are equal, but not when transmission rates differ enough and migration is strong enough, and phenotype $A$ fixes. 
+The polymorphism $(x_1^*, x_2^*)$ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) is protected when transmission rates are equal, but not when transmission rates differ enough and migration is strong enough, in which case fixation of phenotype $A$ is stable. 
 For example, with enough oblique transmission ($\rho_2<\hat \rho$) in deme 2, phenotype $A$ fixes, and the stronger migration is, the less oblique transmission is required to fix $A$, see shaded areas in \autoref{fig:migration_rho}.
 Similarly, with enough migration ($m > \hat m$), phenotype $A$ fixes, and the more oblique transmission in deme 2, the less migration is needed to fix $A$; see shaded area in \autoref{fig:migration_m}.
 
@@ -418,7 +438,8 @@ The figure shows $x^*_i$ the stable frequency of $A$ (top row) and $\bar{w}^*_i$
 Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype 2 is $1$ in both demes).
 The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2$ (x-axis) in deme 2.
 Migration rate $m$ is 0.05, 0.1, or 0.25 I the left, middle, and right columns, respectively.
-The shaded area denotes stables fixation of phenotype $A$ according to~\eqref{eq:migration_model_unconditional_symmetric_condition_rho}.
+The shaded area denotes stables fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_rho}.
+Lines drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differed by less than $10^{-4}$, starting with equal frequencies.
 }
 \label{fig:migration_rho}
 \end{figure*}
@@ -432,7 +453,8 @@ The figure shows $x^*_i$ the stable frequency of $A$ (top row) and $\bar{w}^*_i$
 Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype 2 is $1$ in both demes).
 The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2=1$, $0.4$, and $0.2$, in the left, middle, and right columns, respectively, in deme 2.
 Migration rate $m$ is on the x-axis.
-The shaded area denotes stables fixation of phenotype $A$ according to~\eqref{eq:migration_model_unconditional_symmetric_condition_m}.
+The shaded area denotes stables fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_m}.
+Lines drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differed by less than $10^{-4}$, starting with equal frequencies.
 }
 \label{fig:migration_m}
 \end{figure*}
@@ -441,7 +463,7 @@ The shaded area denotes stables fixation of phenotype $A$ according to~\eqref{eq
 \section*{Discussion}
 
 Models of cultural transmission mostly assume a fixed relative rate at which different modes of transmission -- vertical, horizontal, or oblique -- occur.
-Here we explored a model in which the relative rate of vertical and oblique transmission fluctuates over time, either periodically or randomly. 
+Here we explored a model in which the relative rate of vertical and oblique transmission fluctuates over time, either periodically or randomly, or over space.
 Comparing our results with previous results from a similar model with a fixed rate~\citep{Ram2018}, we find that $\ldots$ (to be continued) % TODO
 %Specifically, if fluctuations are not small then a single phenotype is likely to fix in the population~(\autoref{eq:poly_condition_periodic_fluc}, \autoref{fig:rho1_rho2_k=1}, \autoref{fig:rho1_rho2_stoch_p}), and 
 
@@ -476,8 +498,10 @@ Additional work will be required to understand how such fluctuations affect the 
 %and the Morrison Institute for Population and Resources Studies, Stanford University.
 %}
 
+\newpage
+
 \bibliographystyle{agsm}
-\bibliography{/Users/yoavram/Documents/library}
-%\bibliography{ms}
+%\bibliography{/Users/yoavram/Documents/library}
+\bibliography{ms}
 
 \end{document}  
