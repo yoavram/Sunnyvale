@@ -110,6 +110,18 @@ When a newborn matures, she copies the phenotype---color---of her mother with pr
 \label{fig:transmission}
 \end{figure*}
 
+% TODO what can of spatial differences can we imagine in transmission?
+% two populations, one has first cousin marriages and one doesn't (endogmia)
+% orthodox religious communities
+% boarding schools for one population
+% foraging in groups or families
+% pigmies women 'migration' - adoption by husband family
+% interesting: migration correlated with transmission rate, future work
+
+% matrilineal primates - vertical transmission stronger in females than males
+% similar differences in ultra religious human societies
+
+
 % Model and Results
 \section*{Model and Results}
 
@@ -343,7 +355,7 @@ where $0 \le m_j \le 1/2$ is the migration rate out of deme $j$.
 
 \paragraph{Symmetric migration and selection.}
  
-For the simple case of symmetric migration $m_1=m_2=m<1/2$ after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model} become
+For the simple case of symmetric migration $m_1=m_2=m<1/2$ occurring after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model} become
 \begin{equation}\begin{aligned} \label{eq:migration_model_unconditional_symmetric}
 x_1'' &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_w} x_2 + 1-\rho_2 \Big), \\
 x_2'' &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_w} x_2 + 1-\rho_2 \Big).
@@ -381,7 +393,7 @@ b &= -\frac{(1-m)(w^2+1)}{w}, \quad
 c &=  1-2m.
 \end{aligned}
 \end{equation}
-First, the discriminant $\Delta = b^2-4ac$ is positive for any real $m$, because, when writing it as a quadratic polynomial in $m$, $\Delta(m)=\frac{1}{w^{2}} \big(m^{2} (w^2+1)^2 - 2 m (w^2-1)^2 + (w^2-1)^2\big)$, this polynomial is positive at $m=0$ and $m=1/2$ and has a negative discriminant $-16w^2(w^2-1)^2$.
+First, the discriminant $\Delta = b^2-4ac$ is positive for any real $m$, because, when writing it as a quadratic polynomial in $m$, $\Delta(m)=\frac{1}{w^{2}} \big(m^{2} (w^2+1)^2 - 2 m (w^2-1)^2 + (w^2-1)^2\big)$, this polynomial is positive at $m=0$ and $m=1/2$ and has a negative discriminant $\big(-16w^2(w^2-1)^2\big)$.
 Therefore, the discriminant $\Delta$ is positive for any $0 \le m \le 1/2$ and $f(\lambda)$ has two positive roots. \\
 Second, as $a>0$, $b<0$, and $c>0$, and because $a+b+c=-\frac{1-m}{w}(w-1)^2<0$, the leading eigenvalue is greater than one, both equilibria are unstable, and a protected polymorphism exists and is given by~\eqref{eq:migration_model_unconditional_symmetric_polymorphism}.
 
@@ -389,8 +401,8 @@ When $\rho_1=1$ and $\rho_2=\rho$, the stability of $(0,0)$ (i.e. fixation in $B
 \begin{equation}
 \begin{aligned}
 a &= 1, \quad
-b &= -(1 - m) (w + 1-\rho + \rho/w), \quad
-c &=  (1-2m)(w(1-\rho)+\rho).
+b &= -(1 - m) (w + 1 - \rho + \rho/w), \quad
+c &=  (1 - 2m)(w(1-\rho)+\rho).
 \end{aligned}
 \end{equation}
 
@@ -403,22 +415,31 @@ which is positive for $m=0$ and $m=1/2$:
 \Delta(m=0) = \Big(\frac{(w + \rho) (w-1)}{w}\Big)^2 \\
 \Delta(m=1/2) = \Big(\frac{w^2 + w(1-\rho) + \rho}{2 w}\Big)^2.
 \end{aligned}\end{equation}
-In addition, if we write $\Delta$ as a polynomial in $m$, its discriminant is negative -- $- 16 (w + \rho)^2 (w - 1)^2 \big(w (1 - \rho) + \rho \big) / w^2$, and therefore the discriminant $\Delta$ is positive for any $0 \le m \le 1/2$ and $f(\lambda)$ has two real roots. \\
+In addition, if we write $\Delta$ as a polynomial in $m$, its discriminant is negative $\big(- 16 (w + \rho)^2 (w - 1)^2 \big(w (1 - \rho) + \rho \big) / w^2\big)$, and therefore the discriminant $\Delta$ is positive for any $0 \le m \le 1/2$ and $f(\lambda)$ has two real roots. \\
 Second, $a>0$, $b<0$, and $c>0$ and stability can be analyzed by the sign of $a+b+c$.
 For $\rho=1$ we already have $a+b+c<0$.
 For $\rho=0$ we have $a+b+c=-m(w-1)<0$.
 Finally, $a+b+c$ is a linear function of $\rho$ and therefore $a+b+c<0$ for any valid $\rho$, the leading eigenvalue is greater than one, and $(0,0)$ is unstable.
 
-The stability of $(1,1)$ (i.e. fixation in $A$) is determined by the characteristic polynomial with coefficients
+The stability of $(1,1)$ (i.e. fixation in $A$) is determined by the characteristic polynomial $f(\lambda)$ with coefficients
 \begin{equation}
 \begin{aligned}
 a &= 1, \quad
-b &= -(1-m)(w \rho + 1 -\rho + 1/w), \quad
-c &= (1-2m) \big((1-\rho)/w + \rho\big),
+b &= -(1 - m)(w \rho + 1 - \rho + 1/w), \quad
+c &= (1 - 2m) \big((1-\rho)/w + \rho\big),
 \end{aligned}
 \end{equation}
-%[MWF: Are the roots real?]
-Again, $a>0$, $b<0$, and $c>0$, and if $\rho=1$ then $a+b+c<0$, as before.
+First, the discriminant is 
+$$
+\Delta = (1 - m)^2(w \rho + 1 - \rho + 1/w)^2 - 4 (1 - 2m) \big((1-\rho)/w + \rho\big),
+$$
+which is positive for $m=0$ and $m=1/2$:
+\begin{equation}\begin{aligned}
+\Delta(m=0) = \Big(\frac{(w \rho + 1) (w-1)}{w}\Big)^2 \\
+\Delta(m=1/2) = \Big(\frac{w^2 \rho + w(1-\rho) + 1}{2 w}\Big)^2.
+\end{aligned}\end{equation}
+In addition, if we write $\Delta$ as a polynomial in $m$, its discriminant is negative $\big(- 16 (w\rho + 1)^2 (w - 1)^2 \big(\rho w + 1 - \rho \big) / w^3\big)$, and therefore the discriminant $\Delta$ is positive for any $0 \le m \le 1/2$ and $f(\lambda)$ has two real roots. \\
+Second, $a>0$, $b<0$, and $c>0$, and if $\rho=1$ then $a+b+c<0$, as before.
 However, for $\rho=0$ we have $a+b+c = \frac{m}{w}(w-1)>0$, in which case the stability is determined by $2a+b=\frac{m(w+1)+w-1}{w}$, the derivative of the polynomial at $\lambda=1$, which is positive, and therefore both eigenvalues occur in $(0,1)$ and fixation is stable. %
 
 For any $\rho$, $a+b+c>0$ if and only if
@@ -501,6 +522,7 @@ Additional work will be required to understand how such fluctuations affect the 
 
 % Facebook rural internet 
 % National service - Israel, Singapore
+% Boarding schools
 % Immigrtion - draught
 % Opening schools, universities
 % sending students abroad, bringing experts from abroad
