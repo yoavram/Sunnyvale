@@ -154,7 +154,7 @@ Suppose that both the vertical transmission rate $\rho$ and the selection coeffi
 The change in the frequency $x$ of phenotype $A$ when either $A$ or $B$ is favored is described by $F_A(x)$ and $F_B(x)$, respectively,
 \begin{equation}\begin{aligned} \label{eq:recurrence_periodic_fluc}
 F_A(x) = \rho_A \frac{1+s}{1+sx} x + (1-\rho_A)x, \\
-F_B(x) = \rho_B \frac{1}{1+s-sx} x' + (1-\rho_B)x.
+F_B(x) = \rho_B \frac{1}{1+s-sx} x + (1-\rho_B)x.
 \end{aligned}\end{equation}
 
 \paragraph{Symmetric periods---$AkBk$.}
@@ -164,12 +164,11 @@ Using a linear approximation, fixations of $A$ ($x^*=1$) and $B$ ($x^*=0$) are l
 \big[F'_A(1) F'_B(1)\big]^k < 1, \\
 \big[F'_A(0) F'_B(0)\big]^k < 1. \\
 \end{aligned}\end{equation}
-and if neither of these conditions are met then there exists a \emph{protected polymorphism}.
-Thus for a protected polymorphism, we require
-% TODO check RHS
+A \emph{protected polymorphism} exists if neither of these conditions are met.
+Therefore, for a protected polymorphism to exist, we require
 \begin{equation}
 1 < F'_A(1) F'_B(1) = \Big(1-\rho_A\frac{s}{1+s}\Big)\Big(1+\rho_B s\Big) 
-= 1+\frac{s}{1+s}\big[\rho_B(1+s-\rho_A)-\rho_A\big],
+= 1+\frac{s}{1+s}\big[\rho_B(1+s-s\rho_A)-\rho_A\big],
 \end{equation}
 and
 \begin{equation}
