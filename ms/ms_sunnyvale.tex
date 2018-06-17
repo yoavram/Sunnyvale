@@ -60,7 +60,7 @@ headheight=12pt
 \usepackage[round,colon,authoryear]{natbib}
 
 % Title page
-\title{Vertical and oblique transmission with fluctuating transmission}
+\title{Vertical and oblique transmission fluctuating in time and in space}
 
 \author[a]{Yoav Ram}
 \author[b]{Uri Liberman}
@@ -139,8 +139,8 @@ where $\overline w = 1 + xs$ is the population mean fitness.
 Suppose that the vertical transmission rate $\rho$ fluctuates, such that $\rho = \rho_1$ in odd generations and $\rho = \rho_2$ in even generations.
 From \eqref{eq:recurrence}, the recurrence equations for two generations is then
 \begin{equation}\begin{aligned} \label{eq:recurrence_two_generations}
-x' = \rho_1 \frac{1+s}{\overline w} x + (1-\rho_1)x, \\
-x'' = \rho_2 \frac{1+s}{\overline w} x' + (1-\rho_2)x'.
+x' = \rho_1 \frac{1+s}{\overline w} x + (1-\rho_1)x, \quad \overline w = 1 + xs, \\
+x'' = \rho_2 \frac{1+s}{\overline w'} x' + (1-\rho_2)x', \quad \overline w' = 1 + x's.
 \end{aligned}\end{equation}
 
 First, fixations of $A$ and $B$ ($x^*=1$ and $x^*=0$, respectively) are both equilibria, as they solve $x''=x$.
@@ -173,7 +173,7 @@ Therefore, for a protected polymorphism to exist, we require
 and
 \begin{equation}
 1 < F'_A(0) F'_B(0) = \Big(1+\rho_A s\Big)\Big(1-\rho_B \frac{s}{1+s}\Big) 
-= 1+\frac{s}{1+s}\big[\rho_A(1+s) -\rho_B(1+\rho_A s)\big],
+= 1+\frac{s}{1+s}\big[\rho_A(1+s-s\rho_B)-\rho_B\big],
 \end{equation}
 which can be summarized as a condition on $\rho_B$,
 \begin{equation} \label{eq:poly_condition_periodic_fluc}
@@ -227,8 +227,8 @@ Here, $\rho_A=0.5$.}
 More generally, phenotype $A$ could be favored for $k$ generations and phenotype $B$ for $l$ generations, with the transmission rate following the same cycle with $\rho=\rho_A$ when $A$ is favored and $\rho=\rho_B$ when $B$ is favored.
 The requirements for a protected polymorphism are now
 \begin{equation}\begin{aligned}
-1 &< (F'_A(0))^k (F'_B(0))^l = a^k \big(b - \Delta \rho s/(1+s)\big)^l,\\
-1 &< (F'_A(1))^k (F'_B(1))^l = b^k (a + \Delta \rho s)^l,
+1 &< (F'_A(0))^k (F'_B(0))^l = a^k \big(b - s \Delta \rho /(1+s)\big)^l,\\
+1 &< (F'_A(1))^k (F'_B(1))^l = b^k (a + s \Delta \rho)^l,
 \end{aligned}\end{equation}
 where $a=1+\rho_A s>1$, $b=1-\rho_A\frac{s}{1+s}<1$, and $\Delta \rho = \rho_B - \rho_A$.
 This leads to a condition similar to eq.~20 in~\citet{Ram2018}, but more complex due to the inclusion of $\Delta \rho$:
@@ -247,8 +247,8 @@ Rewrite eq.~28 from \citet{Ram2018} so that $\rho$ is also a random variable
 \begin{equation}
 x_t = x_t \frac{1 + z_t + x_t (1 - \rho_t) s_t}{1 + x_t s_t},
 \end{equation}
-where $s_t$ are i.i.d (independent and identically distributed), $Pr(-1+C<s_t<D)=1$ for some positive $C$ and $D$, $\rho_t$ are i.i.d, and  $0<\rho_t<1$ ($t=0,1,2,\ldots$).
-Therefore, $z_t = \rho_t s_t$  are independent and identically distributed and $P(-1+C < z_t < D)$. 
+where $z_t=\rho_t s_t$, $s_t$ are i.i.d (independent and identically distributed), $Pr(-1+C<s_t<D)=1$ for some positive $C$ and $D$, $\rho_t$ are i.i.d, and  $0<\rho_t<1$ ($t=0,1,2,\ldots$).
+Therefore, $z_t$ are independent and identically distributed and $P(-1+C < z_t < D)$. 
 From \citet[][results~6 and 7]{Ram2018} we have:
 \begin{itemize}
 \item Suppose $E[log(1+z_t)]>0$. Then $x^*=0$ is not stochastically locally stable and in fact $P(lim_{t \to \infty} x_t=0) = 0$, i.e., fixation of $B$ almost surely does not occur.
@@ -266,7 +266,7 @@ and therefore it is not possible that both fixations are stochastically locally 
 \end{itemize}
 
 \paragraph{Examples.}
-First, if $s_t$ and $\rho_t$ are independent ($cov(s_t, \rho_t)=0$) and $s_t$ is symmetric around zero, then $E[z_t]=0$ and $E[-z_t/(1+s_t)]>0$ (because $E[s_t/(1+s_t)] < E[s_t]$).
+First, if $s_t$ and $\rho_t$ are independent ($cov(s_t, \rho_t)=0$) and $s_t$ is symmetric around zero, then $E[-z_t/(1+s_t)] > 0$ (because $E[-z_t/(1+s_t)] = - E[\rho_t] \cdot E[s_t/(1+s_t)]$ and $E[s_t/(1+s_t)] < E[s_t] = 0$).
 Therefore, fixation of $B$ is stochastically locally stable and fixation of $A$ almost surely does not occur.
 For example, let $s_t \sim U(-1, 1)$ and $\rho_t \sim U(0,1)$ independently (in particular, $cov(\rho_t, s_t)=0$), then $E[log(1+z_t)]\approx -0.07315$ and $E[log(1-z_t/(1+s_t))]\approx 0.2337$.
 
@@ -308,8 +308,6 @@ The diagonal represents the case of no transmission fluctuations; \citet[Fig.~2]
 \label{fig:rho1_rho2_stoch_p}
 \end{figure*}
 
-% TODO full correlation between rho and s?
-
 % Finite population size
 \subsection*{Finite population size}
 
@@ -323,7 +321,7 @@ The mean $\mu(x)$ and variance $\sigma^2(x)$ of the change in the frequency $x$ 
 \quad \text{and} \quad
 \sigma^2(x) = n x (1-x),
 \end{equation}
-where $S_n = \sum_{t=1}^{n}{z_t}$.
+where $S_n = \sum_{t=1}^{n}{z_t}$ and $z_t = \rho_t s_t$.
 Furthermore, combining \eqref{eq:drift_diffusion_terms} with eqs.~46-47 from \citet{Ram2018}, we find that the fixation probability of phenotype $A$, starting from a frequency $x$ of phenotype $A$, is
 \begin{equation}
 u(x) = \frac{1 - e^{-2 \frac{S_n}{n} x}}{1 - e^{-2 \frac{S_n}{n}}}.
@@ -450,7 +448,7 @@ Therefore, fixation of $A$ is stable iff $\rho < \frac{m}{m+(1-m)(w-1)}$ \eqref{
 
 \paragraph{Examples.}
 
-\autoref{fig:migration_rho} and \autoref{fig:migration_m} show the stable frequencies of phenotype $A$~ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) and the stable population mean fitnesses in the two demes with symmetric selection where $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar selection intensities.
+Figures \ref{fig:migration_rho} and \ref{fig:migration_m} show the stable frequencies of phenotype $A$~ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) and the stable population mean fitnesses in the two demes with symmetric selection where $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar selection intensities.
 Notably, in the absence of oblique transmission (\autoref{fig:migration_m}, left column), migration decreases the differences between the demes and reduces the population mean fitnesses.
 With some oblique transmission, but equal in both demes, results are similar (not shown).
 However, if oblique transmission is stronger in deme 2 than in deme 1 (\autoref{fig:migration_m}, middle and right columns), the stable frequency of $A$ increases in both demes.
@@ -529,8 +527,6 @@ This work was supported in part by
 the Stanford Center for Computational, Evolutionary and Human Genomics, 
 and the Morrison Institute for Population and Resources Studies, Stanford University.
 }
-
-\newpage
 
 \bibliographystyle{agsm}
 %\bibliography{/Users/yoavram/Documents/library}
