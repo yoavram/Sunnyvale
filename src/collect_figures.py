@@ -11,7 +11,7 @@ if __name__ == '__main__':
 	figures_dir = '../figures'
 	ms_figures_dir = join_path(ms_dir, 'figures')
 	zip_fname = '/Users/yoavram/Dropbox/Sunnyvale/figures.zip'
-	tex_files = ['ms.tex']
+	tex_files = ['ms_sunnyvale.tex']
 	pattern = re.compile(r'\\includegraphics(?:\[.*\])?\{(.*\.\w{3})\}')
 
 	if os.path.exists(ms_figures_dir):
