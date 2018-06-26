@@ -355,7 +355,8 @@ This occurs because selection  affects only those individuals that transmit thei
 % Fluctuations in space
 \subsection*{Fluctuations in space}
 
-We now describe a model in which fluctuations in selection and transmission occur in space, rather then time. Consider a population divided to two demes.
+We now describe a model in which fluctuations in selection and transmission occur in space, rather then time.
+Consider a population divided to two demes.
 Selection (e.g. reproduction) and transmission (e.g. learning, development) occur within the demes, followed by migration of sub-adults---individuals that have already acquired their phenotype but have yet to reproduce.
 The frequency of phenotype $A$ in deme $j$ is denoted by $x_j$, and therefore after selection and transmission the frequencies are 
 \begin{equation} \label{eq:migration_model_selection_transmission}
@@ -366,20 +367,27 @@ where $w_j$ is the fitness of phenotype $A$ in deme $j$ relative to the fitness 
 Following migration, the frequencies of $A$ in the two demes are
 \begin{equation} \label{eq:migration_model_migration}
 \begin{aligned}
-x_1'' &= (1-m_1) x_1' + m_2 x_2', \\
-x_2'' &= m_1 x_1' + (1-m_2) x_2',
+\gamma_1 x_1'' &= (1-m) x_1' + c m x_2', \quad \gamma_1 = (1-m) + c m, \\
+\gamma_2 x_2'' &= m x_1' + c (1-m) x_2', \quad \gamma_2 = m + c (1-m),
 \end{aligned}
 \end{equation}
-where $0 \le m_j \le 1/2$ is the migration rate out of deme $j$. 
+where $0 \le m \le 1/2$ is the migration rate, i.e. the fraction of the population that is replaced by migrants; $c>0$ is the relative size of deme 2 compared to deme 1 (at least where migration is concerned); and $\gamma_1$ is a normalizing factor.
+This is a \emph{two-deme stepping-stone migration scheme}~\citep[][eqs.~2.15-16]{Karlin1982}.
 
 \paragraph{Symmetric migration and selection.}
+
+%todo
+%asymmetric migration, check x*=(0,0) and (1,1)
+%do simulations to find other stable points
+%how do m1/m2 and rho1/rho2 balance each other in terms of polymorphism etc.
  
-In the case of symmetric migration $m_1=m_2=m$ occurring after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model_selection_transmission}~and~\eqref{eq:migration_model_migration} become
+In the case of symmetric migration $c=1$ occurring after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model_selection_transmission}~and~\eqref{eq:migration_model_migration} become
 \begin{equation}\begin{aligned} \label{eq:migration_model_unconditional_symmetric}
 x_1'' &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_2} x_2 + 1-\rho_2 \Big), \\
 x_2'' &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} x_1 + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_2} x_2 + 1-\rho_2 \Big).
 \end{aligned}
 \end{equation}
+This is the \emph{homogeneous stepping-stone migration scheme}~\citep[][eq.~2.14]{Karlin1982}.
 
 We have the following results:
 \begin{itemize}
@@ -486,9 +494,9 @@ Similarly, with enough migration ($m > \hat m$), phenotype $A$ fixes, and the mo
 \caption{
 \textbf{Oblique transmission and migration: effect of transmission.} 
 The figure shows $x^*_i$ the stable frequencies of $A$ (top row) and $\bar{w}^*_i$ the population mean fitnesses (bottom row) in the two demes.
-Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype 2 is $1$ in both demes).
+Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype $B$ is $1$ in both demes).
 The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2$ (x-axis) in deme 2.
-Migration rate $m$ is 0.05, 0.1, or 0.25 I the left, middle, and right columns, respectively.
+Migration rate $m$ is 0.05, 0.1, or 0.25 in the left, middle, and right columns, respectively.
 The shaded area denotes stable fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_rho}.
 Lines are drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differ by less than $10^{-4}$, starting with equal frequencies.
 }
@@ -501,7 +509,7 @@ Lines are drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric
 \caption{
 \textbf{Oblique transmission and migration: effect of migration.} 
 The figure shows $x^*_i$ the stable frequencies of $A$ (top row) and $\bar{w}^*_i$ the population mean fitnesses (bottom row) in the two demes.
-Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype 2 is $1$ in both demes).
+Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype $B$ is $1$ in both demes).
 The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2=1$, $0.4$, and $0.2$, in the left, middle, and right columns, respectively, in deme 2.
 Migration rate $m$ is on the x-axis.
 The shaded area denotes stables fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_m}.
