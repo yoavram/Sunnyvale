@@ -367,19 +367,44 @@ where $w_j$ is the fitness of phenotype $A$ in deme $j$ relative to the fitness 
 Following migration~\citep{Karlin1981}, the frequencies of $A$ in the two demes are
 \begin{equation} \label{eq:migration_model_migration}
 \begin{aligned}
-\gamma_1 x_1' &= (1-m) x_1^s + \tau m x_2^s, \quad \gamma_1 = (1-m) + \tau m, \\
-\gamma_2 x_2' &= m x_1^s + \tau (1-m) x_2^s, \quad \gamma_2 = m + \tau (1-m),
+\gamma_1 x_1' &= (1-m_1) x_1^s + m_1 x_2^s, \\
+\gamma_2 x_2' &= m_2 x_1^s + (1-m_2) x_2^s,
 \end{aligned}
 \end{equation}
-where $0 \le m \le 1/2$ is the migration rate, i.e. the fraction of the population that is replaced by migrants; $\tau>0$ is the relative size of deme 2 compared to deme 1 (at least where migration is concerned); and $\gamma_j$ is a normalizing factor.
-This is a \emph{two-deme stepping-stone migration scheme}~\citep[][eqs.~2.15-16]{Karlin1982}.
+where $0 \le m_1, m_2 \le 1/2$ are the migration rates, such that $m_1$ is the fraction of the population of deme 1 replaced by individuals from deme 2, and vice versa for $m_2$.
+This is a \emph{two-deme stepping-stone migration scheme}~\citep[][eq.~2.17]{Karlin1982}.
+Analysis of this general model is difficult, though some analytical results may be attained~\citep[see~Principle~6.1]{Karlin1982}.
 
-%todo
-%do simulations to find stable polymorphisms
-%how do m1/m2 and rho1/rho2 balance each other in terms of polymorphism
+\paragraph{Asymmetric migration and symmetric selection.}
+
+\autoref{fig:asym_migration} shows some numerical results for the case of symmetric selection symmetric selection $w_1=1/w_2=w>1$.
+We focus on composite parameters of the model:
+$m_1/m_2$, on the x-axis, is the ratio of migration rates into deme 1 and deme 2; when this ratio is large, deme 1 accepts more migrants than deme 2.
+$\rho_1/\rho_2$, on the y-axis the ratio of the vertical transmission rates in deme 1 and deme 2; when this ratio is large, individuals in deme 1 use vertical transmission more often then individuals in deme 2.
+
+The results demonstrate that fixation of phenotype $A$ is stable if migration to and oblique transmission within deme 1, where $A$ is favored, are higher than in deme 2.
+The vice-versa is true for phenotype $B$.
+A protected polymorphism exists if neither fixation is stable: if migration ratios are positively correlated -- vertical transmission occurs more often in the deme that accepts more migrants -- or if both ratios are close to unity, that is, the differences between the demes in terms of migration and transmission are small (\autoref{fig:asym_migration}).
+
+\begin{figure*}[hbt]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/asym_migration.pdf}
+\caption{
+\textbf{Oblique transmission and asymmetric migration.}
+Classification of the stable equilibrium of the system in eqs.~\ref{eq:migration_model_selection_transmission}-\ref{eq:migration_model_migration} for different ratios of the migration rates (x-axis) and vertical transmission rates (y-axis) in the two demes.
+Stability was determined for 10,000 random choices of $m_1$, $m_2$, $\rho_1$, and $\rho_2$ by calculating the leading eigenvalue of the Jacobian of the system.
+Blue markers denote cases in which the leading eigenvalue of the Jacobian at $x_1=x_2=0$ was less than 1, leading to fixation of $B$.
+Red markers denote cases in which the leading eigenvalue of the Jacobian at $x_1=x_2=1$ was less than 1, leading to fixation of $A$.
+Greens markers denote cases in which both leading eigenvalues were larger than 1, leading to a protected polymorphism.
+Here, the fitness values are $w_1=1/w_2=2$.
+}
+\label{fig:asym_migration}
+\end{figure*}
+
+
 \paragraph{Symmetric migration and selection.}
  
-In the case of symmetric migration $\tau=1$ occurring after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model_selection_transmission}~and~\eqref{eq:migration_model_migration} become
+In the case of symmetric migration $m_1=m_2=m$ occurring after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model_selection_transmission}~and~\eqref{eq:migration_model_migration} become
 \begin{equation}\begin{aligned} \label{eq:migration_model_unconditional_symmetric}
 x_1' &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_2} + 1-\rho_2 \Big), \\
 x_2' &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_2} + 1-\rho_2 \Big).
