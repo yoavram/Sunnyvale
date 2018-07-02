@@ -360,15 +360,15 @@ Consider a population divided to two demes.
 Selection (e.g. reproduction) and transmission (e.g. learning, development) occur within the demes, followed by migration of sub-adults---individuals that have already acquired their phenotype but have yet to reproduce.
 The frequency of phenotype $A$ in deme $j$ is denoted by $x_j$, and therefore after selection and transmission the frequencies are 
 \begin{equation} \label{eq:migration_model_selection_transmission}
-x_j' = \rho_j \frac{w_j}{\overline{w}_j} x_j + (1-\rho_j) x_j,
+x_j^s = \rho_j \frac{w_j}{\overline{w}_j} x_j + (1-\rho_j) x_j,
 \end{equation}
 where $w_j$ is the fitness of phenotype $A$ in deme $j$ relative to the fitness of phenotype $B$; $\overline{w}_j=w_j x_j + (1-x_j)$ is the mean fitness in deme $j$; and $\rho_j$ is the vertical transmission rate in deme $j$.
 
 Following migration~\citep{Karlin1981}, the frequencies of $A$ in the two demes are
 \begin{equation} \label{eq:migration_model_migration}
 \begin{aligned}
-\gamma_1 x_1'' &= (1-m) x_1' + c m x_2', \quad \gamma_1 = (1-m) + c m, \\
-\gamma_2 x_2'' &= m x_1' + c (1-m) x_2', \quad \gamma_2 = m + c (1-m),
+\gamma_1 x_1' &= (1-m) x_1^s + c m x_2^s, \quad \gamma_1 = (1-m) + c m, \\
+\gamma_2 x_2' &= m x_1^s + c (1-m) x_2^s, \quad \gamma_2 = m + c (1-m),
 \end{aligned}
 \end{equation}
 where $0 \le m \le 1/2$ is the migration rate, i.e. the fraction of the population that is replaced by migrants; $c>0$ is the relative size of deme 2 compared to deme 1 (at least where migration is concerned); and $\gamma_j$ is a normalizing factor.
@@ -381,8 +381,8 @@ This is a \emph{two-deme stepping-stone migration scheme}~\citep[][eqs.~2.15-16]
  
 In the case of symmetric migration $c=1$ occurring after symmetric selection $w_1=1/w_2=w>1$, the recursions~\eqref{eq:migration_model_selection_transmission}~and~\eqref{eq:migration_model_migration} become
 \begin{equation}\begin{aligned} \label{eq:migration_model_unconditional_symmetric}
-x_1'' &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_2} + 1-\rho_2 \Big), \\
-x_2'' &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_2} + 1-\rho_2 \Big).
+x_1' &= (1-m)x_1\Big(\rho_1 \frac{w}{\overline w_1} + 1-\rho_1 \Big) + m x_2\Big(\rho_2 \frac{1/w}{\overline w_2} + 1-\rho_2 \Big), \\
+x_2' &= m x_1\Big(\rho_1 \frac{w}{\overline w_1} + 1-\rho_1 \Big) + (1-m) x_2\Big(\rho_2 \frac{1/w}{\overline w_2} + 1-\rho_2 \Big).
 \end{aligned}
 \end{equation}
 This is the \emph{homogeneous stepping-stone migration scheme}~\citep[][eq.~2.14]{Karlin1982}.
