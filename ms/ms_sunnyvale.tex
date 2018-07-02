@@ -367,8 +367,8 @@ where $w_j$ is the fitness of phenotype $A$ in deme $j$ relative to the fitness 
 Following migration~\citep{Karlin1981}, the frequencies of $A$ in the two demes are
 \begin{equation} \label{eq:migration_model_migration}
 \begin{aligned}
-\gamma_1 x_1' &= (1-m_1) x_1^s + m_1 x_2^s, \\
-\gamma_2 x_2' &= m_2 x_1^s + (1-m_2) x_2^s,
+x_1' &= (1-m_1) x_1^s + m_1 x_2^s, \\
+x_2' &= m_2 x_1^s + (1-m_2) x_2^s,
 \end{aligned}
 \end{equation}
 where $0 \le m_1, m_2 \le 1/2$ are the migration rates, such that $m_1$ is the fraction of the population of deme 1 replaced by individuals from deme 2, and vice versa for $m_2$.
