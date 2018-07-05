@@ -2,7 +2,7 @@
 \usepackage{geometry}
 \geometry{
 a4paper,
-total={170mm,257mm},
+total={170mm,252mm},
 left=20mm,
 top=20mm,
 headheight=12pt
@@ -58,6 +58,7 @@ headheight=12pt
 
 % NatBib
 \usepackage[round,colon,authoryear]{natbib}
+\usepackage{xcolor}
 
 % line numbers
 \usepackage[displaymath, mathlines]{lineno}
@@ -66,7 +67,7 @@ headheight=12pt
 \modulolinenumbers[2]
 
 % Title page
-\title{Vertical and oblique transmission fluctuating in time and in space}
+\title{Vertical and oblique {\color{red}cultural} transmission fluctuating in time and in space}
 
 \author[a]{Yoav Ram}
 \author[b]{Uri Liberman}
@@ -89,7 +90,7 @@ headheight=12pt
 
 In evolutionary genetics, the properties of transmission are known to be important, e.g., uniparental vs.\ biparental; haploid vs.\ diploid; with or without recombination; sexual or asexual. For cultural evolution, the mode of transmission between individuals of the same or different generations is also central to the dynamics of cultural traits.
 %Important modes of cultural transmission are vertical (from parent to offspring), horizontal (between peers), and oblique (from adults in the parental generation to offspring) transmission. 
-\citet[ch.~3]{Cavalli-Sforza1981} first introduced models in which a specific cultural trait is transmitted either vertically, that is, directly from parent to offspring, or obliquely, that is, from non-parental members of the parent's generation to an offspring.
+{\color{red}Using analysis with epidemic theory}, \citet[ch.~3]{Cavalli-Sforza1981}  introduced models in which a specific cultural trait is transmitted either vertically, that is, directly from parent to offspring, obliquely, that is, from non-parental members of the parent's generation to an offspring{\color{red}, or horizontally, that is, among members of the same generational cohort.}
 Mathematical models of cultural evolution may include one or more modes of cultural transmission and in most of these models the mode of transmission by individuals is fixed; that is, it does not vary over time.
 For example, \cite{Feldman1996}, \cite{Wakano2004}, \cite{Aoki2005}, and \citet{McElreath2008} focused on competition between individual learning, innate learning, and social learning; \citet{Fogarty2017} compared the effects of different oblique mechanisms (random, success-biased, best-of-$k$, one-to-many) on the cultural richness and diversity of the population; and \citet{Aoki2012} modeled scenarios in which individual and social learning occur during separate stages in life.
 In these studies, the cultural transmission rule did not change during the evolutionary process.
@@ -137,7 +138,7 @@ When a newborn matures, she copies the phenotype---color---of her mother with pr
 
 Consider a very large population whose members are characterized by a single dichotomous cultural trait with phenotypes $A$ and $B$ and fitness values $w_A=1+s$ and $w_B=1$, respectively.
 Phenotypes are transmitted vertically with probability $\rho$ or obliquely with probability $1-\rho$~(\autoref{fig:transmission}).
-Given $x$ the frequency of phenotype $A$ at the current generation, the frequency of $A$ in the next generation is
+Given $x$, the frequency of phenotype $A$ at the current generation, the frequency of $A$ in the next generation is
 \begin{equation} \label{eq:recurrence}
 x' = \rho \frac{1+s}{\overline w} x + (1-\rho)x,
 \end{equation}
@@ -155,7 +156,7 @@ x'' = \rho_2 \frac{1+s}{\overline w'} x' + (1-\rho_2)x', \quad \overline w' = 1 
 
 First, fixations of $A$ and $B$ ($x^*=1$ and $x^*=0$, respectively) are both equilibria, as they solve $x''=x$.
 Second, when $s>0$ ($s<0$) because $x'/x = 1+\frac{\rho_1 s (1-x)}{1+sx} > 1$ ($<1$) and $x''/x' = 1+\frac{\rho_2 s (1-x')}{1+sx'} > 1$ ($<1$), the frequency of $A$ ($B$) increases every generation and $x^*=1$ ($x^*=0$) is globally stable.
-Therefore, fluctuations in the mode of transmission ($\rho$) without fluctuations in selection lead to fixation of the favored phenotype, and there cannot be a stable polymorphisms.
+Therefore, fluctuations in the mode of transmission ($\rho$) without fluctuations in selection lead to fixation of the favored phenotype, and there cannot be a stable polymorphism.
 
 % Periodically fluctuating transmission and selection
 \subsection*{Periodically fluctuating transmission and selection}
@@ -230,7 +231,7 @@ The figure demonstrates that the stronger the selection (x-axis), the greater th
 \caption{
 \textbf{Protected polymorphism.}
 The stable equilibrium of the frequency of phenotype $A$ (eq.~\ref{eq:xstar_periodic_fluc_k=1}) for different selection coefficients ($s$ on x-axis) and size of fluctuations in vertical transmission rates ($\rho_B-\rho_A$ on y-axis) when both selection and transmission fluctuate every generation ($k=1$).
-Dashed lines represent $\rho_B=\frac{\rho_A}{1+s(1-\rho_A)}$ and $\rho_B=\frac{(1+s)\rho_A}{1+s\rho_A}$, the limits on $\rho_B-\rho_A$ from eq.~\ref{eq:poly_condition_periodic_fluc} that permit a protected polymorphism.
+Dashed lines represent $\rho_B=\frac{\rho_A}{1+s(1-\rho_A)}$ and $\rho_B=\frac{(1+s)\rho_A}{1+s\rho_A}$, the limits on $\rho_B-\rho_A$ from {\color{red}inequalities~(\ref{eq:poly_condition_periodic_fluc})} that permit a protected polymorphism.
 Here, $\rho_A=0.5$.}
 \label{fig:rho1_rho2_phase_k=1}
 \end{figure*}
@@ -277,13 +278,13 @@ From \citet[][results~6 and 7]{Ram2018} we can characterize the stochastic local
 \item Suppose $E[log(1+z_t)]<0$. Then $x^*=0$ is stochastically locally stable. 
 \item Similarly, if $E[log(1-z_t/(1+s_t)]<0$, then $x^*=1$ is stochastically locally stable, and if $E[log(1-z_t/(1+s_t))]>0$, then fixation of $A$ almost surely does not occur.
 \item In particular, if $E[z_t] = cov(\rho_t, s_t) + E[\rho_t] E[s_t] \le 0$ then $x^*=0$ is stochastically locally stable, and similarly if $E[-z_t/(1+s_t)] = cov(\rho_t, -s_t/(1+s_t)) - E[\rho_t] E[s_t/(1+s_t)] \le 0$ then $x^*=1$ is stochastically locally stable.
-\item It is not possible that $E[log(1+z_t)]$ and $E[log(1-z_t/(1+s_t)]$ are both negative, as their sum is positive
-\begin{multline}
-E[log(1+z_t)] + E[log(1-z_t/(1+s_t)] = \\
-E[log(1+z_t) + log(1-z_t/(1+s_t)]= \\
-E[log\big((1+z_t)(1-z_t/(1+s_t)\big)]= \\
-E[log\big( 1+\rho_t(1-\rho_t)s_t^2/(1+s_t) \big)] > 0,
-\end{multline}
+\item It is not possible that $E[log(1+z_t)]$ and $E[log(1-z_t/(1+s_t)]$ are both negative, as their sum is positive:
+\begin{equation}\begin{aligned}
+{}&E[log(1+z_t)] + E[log(1-z_t/(1+s_t)]  \\
+={} &E[log(1+z_t) + log(1-z_t/(1+s_t)] \\
+={} &E[log\big((1+z_t)(1-z_t/(1+s_t)\big)] \\
+={} &E[log\big( 1+\rho_t(1-\rho_t)s_t^2/(1+s_t) \big)] > 0,
+\end{aligned}\end{equation}
 and therefore it is not possible that both fixations are stochastically locally stable.
 \end{itemize}
 
@@ -297,7 +298,7 @@ Therefore, if we take the i.i.d fitness random variables for $A$ and $B$ to be $
 
 Second, if $s_t$ and $\rho_t$ are not independent such that $cov(\rho_t, s_t) \ne 0$, a fixation can occur.
 Let $w_{A,t}, w_{B,t} \sim U(0,1)$, $s_t=(w_{A,t}-w_{B,t})/w_{B,t}$ and $\rho_t \sim Beta(1+s_t, 1)$ (a beta distribution with parameters $1+s_t$ and $1$). 
-The covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 4$; estimated by averaging over $10^8$ random values of $s_t$ and $\rho_t$); that is, vertical transmission is more likely when $A$ is favored (i.e. $s_t>0$) and oblique transmission is more  likely when $B$ is favored (i.e. $s_t<0$; \autoref{fig:beta}).
+The covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 4$ {\color{red}as} estimated by averaging over $10^8$ random values of $s_t$ and $\rho_t$); that is, vertical transmission is more likely when $A$ is favored (i.e. $s_t>0$) and oblique transmission is more  likely when $B$ is favored (i.e. $s_t<0$; \autoref{fig:beta}).
 Then $E[log(1+z_t)] >0$ and $B$ almost surely doesn't fix. 
 Also, $E[log(1-z_t / (1+s_t)] < 0$, so fixation of $A$ is stochastically locally stable.
 The opposite occurs if $\rho_t \sim \beta(1, 1+s_t)$ and the covariance of $s_t$ and $\rho_t$ is negative ($cov(s_t, \rho_t) \approx -4$). In that case, fixation of $B$ is stochastically locally stable and $A$ almost surely doesn't fix.
@@ -344,7 +345,7 @@ The mean $\mu(x)$ and variance $\sigma^2(x)$ of the change in the frequency $x$ 
 \sigma^2(x) = n x (1-x),
 \end{equation}
 where $S_n = \sum_{t=1}^{n}{z_t}$ and $z_t = \rho_t s_t$.
-Furthermore, combining eq.~\ref{eq:drift_diffusion_terms} with eqs.~46-47 from \citet{Ram2018}, we find that the probability for fixation of phenotype $A$ when its initial frequency if $x$, is
+Furthermore, combining eq.~\ref{eq:drift_diffusion_terms} with eqs.~46-47 from \citet{Ram2018}, we find that the probability {\color{red}of} fixation of phenotype $A$ when its initial frequency if $x$, is
 \begin{equation}
 u(x) = \frac{1 - e^{-2 \frac{S_n}{n} x}}{1 - e^{-2 \frac{S_n}{n}}}.
 \end{equation}
@@ -383,7 +384,7 @@ $m_1/m_2$, on the x-axis, is the ratio of migration rates into deme 1 and deme 2
 $\rho_1/\rho_2$, on the y-axis the ratio of the vertical transmission rates in deme 1 and deme 2; when this ratio is large, individuals in deme 1 use vertical transmission more often then individuals in deme 2.
 
 The results demonstrate that fixation of phenotype $A$ is stable if migration to and oblique transmission within deme 1, where $A$ is favored, are higher than in deme 2.
-The vice-versa is true for phenotype $B$.
+The {\color{red}opposite} is true for phenotype $B$.
 A protected polymorphism exists if neither fixation is stable: if migration ratios are positively correlated -- vertical transmission occurs more often in the deme that accepts more migrants -- or if both ratios are close to unity, that is, the differences between the demes in terms of migration and transmission are small (\autoref{fig:asym_migration}).
 
 \begin{figure*}[hbt]
@@ -395,7 +396,7 @@ Classification of the stable equilibrium of the system in eqs.~\ref{eq:migration
 Stability was determined for 10,000 random choices of $m_1$, $m_2$, $\rho_1$, and $\rho_2$ by calculating the leading eigenvalue of the Jacobian of the system.
 Blue markers denote cases in which the leading eigenvalue of the Jacobian at $x_1=x_2=0$ was less than 1, leading to fixation of $B$.
 Red markers denote cases in which the leading eigenvalue of the Jacobian at $x_1=x_2=1$ was less than 1, leading to fixation of $A$.
-Greens markers denote cases in which both leading eigenvalues were larger than 1, leading to a protected polymorphism.
+Green markers denote cases in which both leading eigenvalues were larger than 1, leading to a protected polymorphism.
 Here, the fitness values are $w_1=1/w_2=2$.
 }
 \label{fig:asym_migration}
@@ -414,7 +415,7 @@ This is the \emph{homogeneous stepping-stone migration scheme}~\citep[][eq.~2.14
 
 We have the following results:
 \begin{itemize}
-\item With only oblique transmission ($\rho_1=\rho_2=0$), the only equilibria are the neutral equilibria $(x^*,x^*)$ for any $0 \le x^* \le 1$.
+\item With only oblique transmission ($\rho_1=\rho_2=0$), {\color{red}there are only} neutral equilibria $(x^*,x^*)$ for any $0 \le x^* \le 1$.
 \item With only vertical transmission ($\rho_1=\rho_2=1$), the fixation equilibria  $(0,0)$, $(1,1)$ are unstable and there exists a protected polymorphism
 \begin{equation}
 \begin{aligned} \label{eq:migration_model_unconditional_symmetric_polymorphism}
@@ -432,8 +433,98 @@ or if the migration rate is above $\hat m$; that is,
 m > \hat m = \frac{\rho w - 1}{\rho w + 1}.
 \end{equation}
 \end{itemize}
+{\color{red}The proofs of (22) and (23) are in Appendix I.}
+\paragraph{Examples.}
 
-\paragraph{Proof.}
+Figures \ref{fig:migration_rho} and \ref{fig:migration_m} show the stable frequencies of phenotype $A$~ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) and the stable population mean fitnesses in the two demes with symmetric selection where $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar selection intensities.
+Notably, in the absence of oblique transmission (\autoref{fig:migration_m}, left column), migration decreases the differences between the demes and reduces the population mean fitnesses.
+With some oblique transmission, but equal in both demes, results are similar (not shown).
+However, if oblique transmission is stronger in deme 2 than in deme 1 (\autoref{fig:migration_m}, middle and right columns), the stable frequency of $A$ increases in both demes.
+Therefore, the mean fitness in deme 1 decreases to a lesser extent than in deme 2, and even increases when the migration rate is high enough.
+
+The polymorphism $(x_1^*, x_2^*)$ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) is protected when transmission rates are equal, but not when transmission rates differ enough and migration is strong enough, in which case fixation of phenotype $A$ is stable. 
+For example, with enough oblique transmission ($\rho_2<\hat \rho$) in deme 2, phenotype $A$ fixes, and the more migration, the less oblique transmission is required to fix $A$ (see shaded areas in \autoref{fig:migration_rho}).
+Similarly, with enough migration ($m > \hat m$), phenotype $A$ fixes, and the more oblique transmission in deme 2, the less migration is needed to fix $A$ (see shaded area in \autoref{fig:migration_m}).
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/migration_rho.pdf}
+\caption{
+\textbf{Oblique transmission and migration: effect of transmission.} 
+The figure shows $x^*_i$ the stable frequencies of $A$ (top row) and $\bar{w}^*_i$ the population mean fitnesses (bottom row) in the two demes.
+Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype $B$ is $1$ in both demes).
+The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2$ (x-axis) in deme 2.
+Migration rate $m$ is 0.05, 0.1, or 0.25 in the left, middle, and right columns, respectively.
+The shaded area denotes stable fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_rho}.
+Lines are drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differ by less than $10^{-4}$, starting with equal frequencies.
+}
+\label{fig:migration_rho}
+\end{figure*}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/migration_m.pdf}
+\caption{
+\textbf{Oblique transmission and migration: effect of migration.} 
+The figure shows $x^*_i$, the stable frequencies of $A$ (top row), and $\bar{w}^*_i$, the population mean fitnesses (bottom row), in the two demes.
+Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype $B$ is $1$ in both demes).
+The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2=1$, $0.4$, and $0.2$, in the left, middle, and right columns, respectively, in deme 2.
+Migration rate $m$ is on the x-axis.
+The shaded area denotes stables fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_m}.
+Lines are drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differ by less than $10^{-4}$, starting with equal frequencies.
+}
+\label{fig:migration_m}
+\end{figure*}
+
+% Discussion
+\section*{Discussion}
+
+Most models of cultural transmission assume a fixed relative rate at which different modes of transmission---vertical, horizontal, or oblique---occur.
+Here we explored a model in which the relative rates of vertical and oblique transmission fluctuate over time, either periodically or randomly, or over space.
+
+Comparing our results with previous results from a similar model with a fixed rate of vertical transmission~\citep{Ram2018}, we find that a protected polymorphism can be maintained only if fluctuations in the rate of vertical transmission are small, and that stronger selection on the transmitted trait permits larger fluctuations in the rate of transmission while still maintaining a protected polymorphism. 
+In the case of fluctuations in space, the greater the separation between the two populations {\color{red}(i.e., the smaller the migration rates)} the larger {\color{red} can be the fluctuations that maintain} polymorphism; however, as migration becomes more frequent, even small differences in the vertical transmission rate will eliminate the polymorphism.
+When fluctuations are stochastic, we find that if vertical transmission covaries with selection, the phenotype that has a higher probability of being vertically transmitted  when it is favored will likely eventually fix in the population.
+However, if transmission and selection are independent, then a polymorphism can be maintained if selection does not, on average, favor one phenotype over the other.
+
+One caveat of our model is the use of the ``phenotypic gambit''~\citep{Grafen1984}: the assumption that the transmission mode itself is strictly vertically transmitted.
+Although there is {\color{red}some} evidence that the tendency to use different learning mechanisms is genetically transmitted~\citep{Foucaud2013}, this assumption can be challenged: individuals may be able to learn how and when to learn, in what has been called ``social learning of social learning''~\citep{Mesoudi2016}.
+Indeed, it has been demonstrated that guppy fish are more likely to learn from others if previous social experiences provided benefits~\citep{Leris2016}.
+It is also possible that the transmission mode is regulated.
+For example, \citet{Farine2015} found that zebra fish switch from vertical to oblique transmission after exposure to stress hormones.
+Our model accounts for cases in which the entire population changes its transmission mode due to stress, but not for cases in which only some individuals do so.
+
+An extension of our model could incorporate more sophisticated oblique transmission schemes~\citep[][Figure~3]{Creanza2017}.
+For example, conformity---preference for learning a frequent phenotype---has been demonstrated in wild monkeys~\citep{VanDeWaal2013} and birds~\citep{Aplin2015}.
+We suggest that the specific mode of oblique transmission can also fluctuate over time, so that individuals can, for example, conform to the frequent phenotype under benign conditions, and prefer a rare phenotype under stressful conditions.
+Additional work will be required to understand how such fluctuations affect the population dynamics. 
+
+% Facebook rural internet 
+% National service - Israel, Singapore
+% Boarding schools
+% Immigrtion - draught
+% Opening schools, universities
+% sending students abroad, bringing experts from abroad
+% foreign labor
+% refugees
+% hunter-gatherers/chimps increase habitat in years with less food production
+% religion - dark ages etc.
+
+% Acknowledgements
+{\small
+\section*{Acknowledgements}
+
+This work was supported in part by 
+the Stanford Center for Computational, Evolutionary and Human Genomics, 
+the Morrison Institute for Population and Resources Studies, Stanford University, and the John Templeton Foundation.
+}
+
+\bibliographystyle{agsm}
+%\bibliography{/Users/yoavram/Documents/library}
+\bibliography{ms_sunnyvale}
+
+\section*{Appendix I}
+\paragraph{Proof of (22) and (23).}
 
 %For the stability of the equilibria when $\rho_1=\rho_2=1$, the characteristic polynomial of the Jacobian is the same for both fixation equilibria $(0,0)$ and $(1,1)$ and is given by $f(\lambda) = a \lambda^2 + b \lambda + c$ with
 %\begin{equation}
@@ -493,99 +584,11 @@ $$
 \big(- 16 (w\rho + 1)^2 (w - 1)^2 \big(\rho w + 1 - \rho \big) / w^3\big),
 $$
 which is negative, and therefore $\Delta$ is positive for any $0 \le m \le 1/2$ and $f_1(x)$ has two real roots. \\
-Second, $a>0$, $b<0$, and $c>0$ so $f_1$ is positive with a negative derivative at $x=0$ and has a positive derivative at infinity.
+Second, $a>0$, $b<0$, and $c>0$ so $f_1$ is positive with a negative derivative at $x=0$ and  a positive derivative at infinity.
 Therefore, fixation of $A$ is stable iff both $f_1(1)=a+b+c$ and $f_1'(1)=2a+b$ are positive.
 Now $f_1(1)>0$  if $\rho < \frac{m}{m+(1-m)(w-1)}$, and
-$f_1'(1)>0$  if $\rho < \frac{m(w+1)+w-1}{(1-m)w(w-1)}$, which is larger than $\frac{m}{m+(1-m)(w-1)}$ for any $w>1$ and $0 \le m \le 1/2$ (the difference is a quadratic in $w$ with a negative discriminant $2m-1$ and negative value $-1/2$ at $w=2$, $m=0$). 
+$f_1'(1)>0$  if $\rho < \frac{m(w+1)+w-1}{(1-m)w(w-1)}$, which is larger than $\frac{m}{m+(1-m)(w-1)}$ for any $w>1$ and $0 \le m \le 1/2$ (the difference{[\color{red}WHAT DIFFERENCE?]} is a quadratic in $w$ with a negative discriminant $2m-1$ and negative value $-1/2$ at $w=2$, $m=0$). 
 Therefore, fixation of $A$ is stable if $\rho < \frac{m}{m+(1-m)(w-1)}$ \eqref{eq:migration_model_unconditional_symmetric_condition_rho}. By rearranging this inequality, we can also obtain an expression for $m$ \eqref{eq:migration_model_unconditional_symmetric_condition_m}.
 
-\paragraph{Examples.}
-
-Figures \ref{fig:migration_rho} and \ref{fig:migration_m} show the stable frequencies of phenotype $A$~ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) and the stable population mean fitnesses in the two demes with symmetric selection where $A$ is favored in deme 1 and $B$ is favored in deme 2 with similar selection intensities.
-Notably, in the absence of oblique transmission (\autoref{fig:migration_m}, left column), migration decreases the differences between the demes and reduces the population mean fitnesses.
-With some oblique transmission, but equal in both demes, results are similar (not shown).
-However, if oblique transmission is stronger in deme 2 than in deme 1 (\autoref{fig:migration_m}, middle and right columns), the stable frequency of $A$ increases in both demes.
-Therefore, the mean fitness in deme 1 decreases to a lesser extent than in deme 2, and even increases when the migration rate is high enough.
-
-The polymorphism $(x_1^*, x_2^*)$ (eq.~\ref{eq:migration_model_unconditional_symmetric_polymorphism}) is protected when transmission rates are equal, but not when transmission rates differ enough and migration is strong enough, in which case fixation of phenotype $A$ is stable. 
-For example, with enough oblique transmission ($\rho_2<\hat \rho$) in deme 2, phenotype $A$ fixes, and the more migration, the less oblique transmission is required to fix $A$ (see shaded areas in \autoref{fig:migration_rho}).
-Similarly, with enough migration ($m > \hat m$), phenotype $A$ fixes, and the more oblique transmission in deme 2, the less migration is needed to fix $A$ (see shaded area in \autoref{fig:migration_m}).
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.75\linewidth]{../figures/migration_rho.pdf}
-\caption{
-\textbf{Oblique transmission and migration: effect of transmission.} 
-The figure shows $x^*_i$ the stable frequencies of $A$ (top row) and $\bar{w}^*_i$ the population mean fitnesses (bottom row) in the two demes.
-Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype $B$ is $1$ in both demes).
-The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2$ (x-axis) in deme 2.
-Migration rate $m$ is 0.05, 0.1, or 0.25 in the left, middle, and right columns, respectively.
-The shaded area denotes stable fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_rho}.
-Lines are drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differ by less than $10^{-4}$, starting with equal frequencies.
-}
-\label{fig:migration_rho}
-\end{figure*}
-
-\begin{figure*}[ht]
-\centering
-\includegraphics[width=0.75\linewidth]{../figures/migration_m.pdf}
-\caption{
-\textbf{Oblique transmission and migration: effect of migration.} 
-The figure shows $x^*_i$ the stable frequencies of $A$ (top row) and $\bar{w}^*_i$ the population mean fitnesses (bottom row) in the two demes.
-Selection is symmetric between the two demes (the fitness of phenotype $A$ is $w_1=2$ in deme 1 and $w_2=0.5$ in deme 2; the fitness of phenotype $B$ is $1$ in both demes).
-The vertical transmission rate is $\rho_1=1$ in deme 1, and $\rho_2=1$, $0.4$, and $0.2$, in the left, middle, and right columns, respectively, in deme 2.
-Migration rate $m$ is on the x-axis.
-The shaded area denotes stables fixation of phenotype $A$ according to eq.~\ref{eq:migration_model_unconditional_symmetric_condition_m}.
-Lines are drawn by iterating eq.~\ref{eq:migration_model_unconditional_symmetric} until frequencies in consecutive generations differ by less than $10^{-4}$, starting with equal frequencies.
-}
-\label{fig:migration_m}
-\end{figure*}
-
-% Discussion
-\section*{Discussion}
-
-Most models of cultural transmission assume a fixed relative rate at which different modes of transmission---vertical, horizontal, or oblique---occur.
-Here we explored a model in which the relative rates of vertical and oblique transmission fluctuate over time, either periodically or randomly, or over space.
-
-Comparing our results with previous results from a similar model with a fixed rate of vertical transmission~\citep{Ram2018}, we find that a protected polymorphism can be maintained only if fluctuations in the rate of vertical transmission are small, and that stronger selection on the transmitted trait permits larger fluctuations in the rate of transmission while still maintaining a protected polymorphism. 
-In the case of fluctuations in space, the greater the separation between the two populations, the larger the fluctuations can be while still maintaining polymorphism; however, as migration becomes more frequent, even small differences in the vertical transmission rate will eliminate the polymorphism.
-When fluctuations are stochastic, we find that if vertical transmission covaries with selection, the phenotype that has a higher probability of being vertically transmitted  when it is favored will likely eventually fix in the population.
-However, if transmission and selection are independent, then a polymorphism can be maintained if selection does not, on average, favor one phenotype over the other.
-
-One caveat of our model is the use of the ``phenotypic gambit''~\citep{Grafen1984}: the assumption that the transmission mode itself is strictly vertically transmitted.
-Although there is evidence that the tendency to use different learning mechanisms is genetically transmitted~\citep{Foucaud2013}, this assumption can be challenged: individuals may be able to learn how and when to learn, in what has been called ``social learning of social learning''~\citep{Mesoudi2016}.
-Indeed, it has been demonstrated that guppy fish are more likely to learn from others if previous social experiences provided benefits~\citep{Leris2016}.
-It is also possible that the transmission mode is regulated.
-For example, \citet{Farine2015} found that zebra fish switch from vertical to oblique transmission after exposure to stress hormones.
-Our model accounts for cases in which the entire population changes its transmission mode due to stress, but not for cases in which only some individuals do so.
-
-An extension of our model could incorporate more sophisticated oblique transmission schemes~\citep[][Figure~3]{Creanza2017}.
-For example, conformity---preference for learning a frequent phenotype---has been demonstrated in wild monkeys~\citep{VanDeWaal2013} and birds~\citep{Aplin2015}.
-We suggest that the specific mode of oblique transmission can also fluctuate over time, so that individuals can, for example, conform to the frequent phenotype under benign conditions, and prefer a rare phenotype under stressful conditions.
-Additional work will be required to understand how such fluctuations affect the population dynamics. 
-
-% Facebook rural internet 
-% National service - Israel, Singapore
-% Boarding schools
-% Immigrtion - draught
-% Opening schools, universities
-% sending students abroad, bringing experts from abroad
-% foreign labor
-% refugees
-% hunter-gatherers/chimps increase habitat in years with less food production
-% religion - dark ages etc.
-
-% Acknowledgements
-{\small
-\section*{Acknowledgements}
-
-This work was supported in part by 
-the Stanford Center for Computational, Evolutionary and Human Genomics, 
-the Morrison Institute for Population and Resources Studies, Stanford University, and the John Templeton Foundation.
-}
-
-\bibliographystyle{agsm}
-%\bibliography{/Users/yoavram/Documents/library}
-\bibliography{ms_sunnyvale}
 
 \end{document}  
