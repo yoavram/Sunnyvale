@@ -91,7 +91,7 @@ headheight=12pt
 In evolutionary genetics, the properties of transmission are known to be important, e.g., uniparental vs.\ biparental; haploid vs.\ diploid; with or without recombination; sexual or asexual. For cultural evolution, the mode of transmission between individuals of the same or different generations is also central to the dynamics of cultural traits.
 Using analysis with epidemic theory, \citet[ch.~3]{Cavalli-Sforza1981}  introduced models in which a specific cultural trait is transmitted either vertically, that is, directly from parent to offspring, obliquely, that is, from non-parental members of the parent's generation to an offspring, or horizontally, that is, among members of the same generational cohort.
 Mathematical models of cultural evolution may include one or more modes of cultural transmission and in most of these models the mode of transmission by individuals is fixed; that is, it does not vary over time or space.
-For example, \cite{Feldman1996}, \cite{Wakano2004}, \cite{Aoki2005}, and \citet{McElreath2008} focused on competition between individual learning, innate learning, and social learning; \citet{Fogarty2017} compared the effects of different oblique mechanisms (random, success-biased, best-of-$k$, one-to-many) on the cultural richness and diversity of the population; and \citet{Aoki2012} modeled scenarios in which individual and social learning occur during separate stages in life.
+For example, \cite{Feldman1996}, \cite{Wakano2004}, \cite{Aoki2005}, and \citet{McElreath2008} focused on competition between individual learning, innate learning, and social learning; \citet{Fogarty2017} compared the effects of different oblique mechanisms (random, success-biased, best-of-$k$, one-to-many) on the cultural richness and diversity of the population;  and \citet{Aoki2012} modeled scenarios in which individual and social learning occur during separate stages in life.
 In these studies, the cultural transmission rule did not change during the evolutionary process.
 
 Several of these models included fluctuating selection, which could be due to environmental changes~\citep[reviewed in][]{Aoki2014}. 
@@ -103,13 +103,16 @@ There has been much less theory developed for fluctuating transmission.
 Nevertheless, if we assume that social learning can be affected by ecological and demographic factors, such as the frequency of interactions~\citep{VanSchaik2003}, weather~\citep{Phithakkitnukoon2012}, population size or density~\citep{Fischer2015,Aureli1997a}, or stress~\citep{Farine2015}, then it is reasonable that the mode and rate of transmission may fluctuate over time and/or space.
 For example, \citet{Webster2008} have demonstrated that minnows (small freshwater shoaling fish), increase their reliance on social learning when predation risk increases. 
 
-Here, we analyze a model~(\autoref{fig:transmission}) in which individuals learn from their parents with probability $\rho$ (vertical transmission), and from adults in the parental generation with probability $1-\rho$ (oblique transmission), where $\rho$ fluctuates over time or space.
-We find that fluctuations in $\rho$ without corresponding fluctuations in selection cannot maintain a polymorphism.
-When both the rate of vertical transmission and selection fluctuate together in a deterministic setting, the stronger the selection, the greater is the difference in vertical transmission rates that maintains a polymorphism.
-Versions of the model with random fitnesses and transmission rates, and with random drift due to finite population size are also analyzed. We also study a two-population model with migration, symmetrically different fitnesses in the two populations, and different rates of vertical transmission in the two populations.
-Stability of fixation points  and a polymorphism are shown to depend on strength of selection as well as rates of migration and transmission.
+We previously analyzed a model~\citep{Ram2018} in which individuals learn a cultural trait from their parents with probability $\rho$ (vertical transmission), and from adults in the parental generation with probability $1-\rho$ (oblique transmission; see \autoref{fig:transmission}).
+Here, we generalize this model to allow for the vertical transmission rate $\rho$ to fluctuate over time or space.
+We find that fluctuations in $\rho$ without corresponding fluctuations in selection cannot maintain trait polymorphism.
+When both the rate of vertical transmission and selection fluctuate together in a deterministic setting, the stronger the selection, the greater is the difference in vertical transmission rates that maintains trait polymorphism.
+Versions of the model with random fitnesses and transmission rates, and with random drift due to finite population size are also analyzed.
+We also study a two-population model with migration, symmetrically different fitnesses in the two populations, and different rates of vertical transmission in the two populations.
+Stability of fixation points  and trait polymorphism are shown to depend on strength of selection as well as rates of migration and transmission.
 
-We suggest that cultural evolution can be affected by environmental changes that cause temporal or spatial variation in either selection or transmission or both, and that further empirical and theoretical studies are required to disentangle these effects.
+We suggest that cultural evolution can be affected by environmental changes that cause temporal or spatial variation in either selection or transmission or both, and that such variation has a significant effect of trait polymorphism.
+%Further empirical and theoretical studies are required to disentangle these effects.
 
 % figure
 \begin{figure*}[h]
@@ -124,12 +127,13 @@ When a newborn matures, she copies the phenotype---color---of her mother with pr
 % Models and Results
 \section*{Models and Results}
 
-Consider a very large population whose members are characterized by a single dichotomous cultural trait with phenotypes $A$ and $B$ and fitness values $w_A=1+s$ and $w_B=1$, respectively.
-Phenotypes are transmitted vertically with probability $\rho$ or obliquely with probability $1-\rho$~(\autoref{fig:transmission}).
-Given $x$, the frequency of phenotype $A$ at the current generation, the frequency of $A$ in the next generation is
-\begin{equation} \label{eq:recurrence}
-x' = \rho \frac{1+s}{\overline w} x + (1-\rho)x,
-\end{equation}
+Following \citet{Ram2018}, we consider a very large population whose members are characterized by a single dichotomous cultural trait with phenotypes $A$ and $B$ that determine the reproductive success of adults, with fitness values $w_A=1+s$ and $w_B=1$, respectively.
+Phenotypes are transmitted from adults to juveniles: vertically from parent to offspring with probability $\rho$, or obliquely from random adults to offspring with probability $1-\rho$~(\autoref{fig:transmission}).
+Given~$x$, the frequency of phenotype $A$ at the current generation, the frequency of $A$ in the next generation is (see eq.~2 in~\citet{Ram2018})
+\begin{equation}\begin{aligned} \label{eq:recurrence}
+x' &= \rho \frac{1+s}{\overline w} x + (1-\rho)x \\
+&= \frac{1+s}{\overline w} x \big[(1-\rho)x + \rho\big] + \frac{1}{\overline w} (1-x) [(1-\rho)x],
+\end{aligned}\end{equation}
 where $\overline w = 1 + xs$ is the population mean fitness.
 
 % Periodically fluctuating transmission
@@ -246,7 +250,7 @@ Rewrite eq.~28 from \citet{Ram2018} so that $\rho$ is also a random variable
 x_{t+1} = x_t \frac{1 + z_t + x_t (1 - \rho_t) s_t}{1 + x_t s_t},
 \end{equation}
 where $z_t=\rho_t s_t$; $s_t$ are i.i.d (independent and identically distributed); $Pr(-1+C<s_t<D)=1$ for some positive $C$ and $D$; $\rho_t$ are i.i.d; and  $0<\rho_t<1$ ($t=0,1,2,\ldots$).
-Therefore, $z_t$ are independent and identically distributed and $P(-1+C < z_t < D)$.  Following \citet{Karlin1974}, we have:
+Therefore, $z_t$ are independent and identically distributed and $P(-1+C < z_t < D)=1$.  Following \citet{Karlin1974}, we have:
 
 {\it Definition: ``stochastic local stability''.}
 A constant equilibrium state $x^*$ is said to be \emph{stochastically locally stable} if for any $\epsilon>0$ there exists a $\delta>0$ such that $|x_0-x^*|<\delta$ implies
@@ -345,7 +349,7 @@ This occurs because selection  affects only those individuals that transmit thei
 
 We now describe a model in which fluctuations in selection and transmission occur in space, rather then time.
 Consider a population divided to two demes.
-Selection (e.g. reproduction) and transmission (e.g. learning, development) occur within the demes, followed by migration of sub-adults---individuals that have already acquired their phenotype but have yet to reproduce.
+Selection (e.g. reproduction) and transmission (e.g. learning, development) occur within the demes, followed by migration of sub-adults---individuals that have already acquired their phenotype but have yet to reproduce. 
 The frequency of phenotype $A$ in deme $j$ is denoted by $x_j$, and therefore after selection and transmission the frequencies are 
 \begin{equation} \label{eq:migration_model_selection_transmission}
 x_j^s = \rho_j \frac{w_j}{\overline{w}_j} x_j + (1-\rho_j) x_j,
@@ -478,6 +482,23 @@ In the case of fluctuations in space, the greater the separation between the two
 When fluctuations are stochastic, we find that if vertical transmission covaries with selection, the phenotype that has a higher probability of being vertically transmitted  when it is favored will likely eventually fix in the population.
 However, if transmission and selection are independent, then a polymorphism can be maintained if selection does not, on average, favor one phenotype over the other.
 
+An interesting model with a similar structure was studied by \citet{Bisin2001}: it included both vertical (i.e.~``socialization in the family'') and non-vertical (i.e.~``imitation from society'') transmission.
+They focused on a frequency-dependent transmission mode called \emph{cultural substitution}, in which a parent invests more in child socialization if the parental trait is rare.
+Their model (eq. 12) is a continuous-time equivalent of our model (eq.~\ref{eq:recurrence}) that does not distinguish between horizontal and oblique transmission; considers constant, rather than fluctuating, selection; and includes endogenously fluctuating transmission due to changes in trait frequency.
+They have found that under some selection schemes, in which parents choose how many offspring to produce, either an unstable polymorphism (Proposition 4) or a stable polymorphism (Proposition 5) exists, depending on the costs associated with the transmission mode.
+Furthermore, in the absence of selection trait polymorphism is neutral in our model (set $s=0$ in eq.~\ref{eq:recurrence}), but \citet{Bisin2001} have found that frequency-dependent transmission leads to a globally stable polymorphism~(Proposition 1).
+
+An important topic in cultural evolution is the evolutionary dilemma known as Rogers' paradox~\citep{Rogers1988}, which is similar to the problem of the maintenance of cooperation: social learners (aka \emph{cheaters}) benefit from new cultural traits invented by individual learners (aka \emph{cooperators}) without paying the cost associated with individual learning.
+Several authors used population structure to help explain the maintenance of individual learning in this scenario, paralleling the use of population structure for explaining the maintenance of cooperation.
+For example, \citet{Kobayashi2012} modeled both individual learning and social learning via oblique transmission in an infinite island model.
+Their results show that spatial subdivision favors individual learning over social learning.
+Maintenance of individual learning is also crucial for cumulative culture, in which cultural innovations made by individual learning are transmitted and accumulated via social learning. Similarly to the effect of cheating in public goods games, social learning can cause the collapse of cumulative culture~\citep{Wakano2014}.
+To resolve this dilemma, \citet{Ohtsuki2017} modeled individual and social learning in a structured population, but allowed social learning to be at least partially vertical, rather than completely horizontal or oblique. 
+They have demonstrated that if kin-selection has a significant effect on the dynamics, then increases in inclusive fitness due to vertical transmission can negate the cost of individual learning, at least to some extent, and allow for high levels of cumulative culture to evolve.
+\citet{Mullon2017} have also studied a model of individual and social learning that includes both vertical and oblique transmission in a cumulative culture setting. 
+Their results show that the effect of vertical transmission on maintenance of individual learning is stronger if vertical transmission is more efficient than oblique transmission, i.e. ``if offspring learn better from relatives, or if parents devote more teaching effort towards offspring''.
+Following our hypothesis that the transmission mode fluctuates over time and space, we suggest that such fluctuations could facilitate the maintenance of individual learning, and therefore cultural accumulation: when vertical transmission is high, innovation by individual learning will be common due to increased inclusive fitness; when oblique transmission is high, new cultural traits will quickly spread via social learning.
+
 One caveat of our model is the use of the ``phenotypic gambit''~\citep{Grafen1984}: the assumption that the transmission mode itself is strictly vertically transmitted.
 Although there is some evidence that the tendency to use different learning mechanisms is genetically transmitted~\citep{Foucaud2013}, this assumption can be challenged: individuals may be able to learn how and when to learn, in what has been called ``social learning of social learning''~\citep{Mesoudi2016}.
 Indeed, it has been demonstrated that guppy fish are more likely to learn from others if previous social experiences provided benefits~\citep{Leris2016}.
@@ -485,9 +506,15 @@ It is also possible that the transmission mode is regulated.
 For example, \citet{Farine2015} found that zebra fish switch from vertical to oblique transmission after exposure to stress hormones.
 Our model accounts for cases in which the entire population changes its transmission mode due to stress, but not for cases in which only specific (e.g. stressed) individuals do so.
 
+Our spatial model (eqs. \ref{eq:migration_model_selection_transmission}-\ref{eq:migration_model_migration}) assumes migration by sub-adults, or more specifically, that migration follows cultural transmission, which occurs at the native deme. 
+This is a necessary assumption for modeling vertical transmission, which cannot occur after offspring migrate out of their native deme, leaving their parents behind.
+Other authors have taken a different approach when focusing on oblique transmission: for example, \citet{Kobayashi2012} assumed migration by juveniles, followed by a combination of individual and social learning at the new deme.
+Further work could investigate the evolution of vertical vs. horizontal transmission, in which case migration could occur before transmission, rather than after.
+
+
 An extension of our model could incorporate more sophisticated oblique transmission schemes~\citep[][Figure~3]{Creanza2017}.
 For example, conformity---preference for learning a frequent phenotype---has been demonstrated in wild monkeys~\citep{VanDeWaal2013} and birds~\citep{Aplin2015}.
-We suggest that the specific mode of oblique transmission can also fluctuate over time, so that individuals can, for example, conform to the frequent phenotype under benign conditions, and prefer a rare phenotype under stressful conditions.
+We suggest that the specific mode of oblique transmission can also fluctuate over time, so that individuals can, for example, conform to the frequent phenotype under benign conditions, and prefer a rare phenotype under stressful conditions; more generally, the mode of transmission could be plastic and viewed as a reaction norm to variable environments.
 Additional work will be required to understand how such fluctuations affect the population dynamics. 
 
 % Acknowledgements
@@ -501,7 +528,8 @@ the Morrison Institute for Population and Resources Studies, Stanford University
 
 % bibliography
 \bibliographystyle{agsm}
-\bibliography{ms_sunnyvale}
+\bibliography{/Users/yoavram/Documents/library}
+%\bibliography{ms_sunnyvale}
 
 % Appendix
 \section*{Appendix I}
