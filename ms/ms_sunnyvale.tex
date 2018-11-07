@@ -61,19 +61,22 @@ headheight=12pt
 \usepackage{xcolor}
 
 % line numbers
-%\usepackage[displaymath, mathlines]{lineno}
-%\renewcommand\linenumberfont{\normalfont\small\sffamily}
-%\linenumbers
-%\modulolinenumbers[2]
+\usepackage[displaymath, mathlines]{lineno}
+\renewcommand\linenumberfont{\normalfont\small\sffamily}
+\linenumbers
+\modulolinenumbers[2]
 
 % Title page
 \title{Vertical and oblique cultural transmission fluctuating in time and in space}
 
-\author[a]{Yoav Ram}
+\author[ac*]{Yoav Ram}
 \author[b]{Uri Liberman}
-\author[a]{Marcus W. Feldman}
+\author[a\dagger]{Marcus W. Feldman}
 \affil[a]{Department of Biology, Stanford University, Stanford, CA}
 \affil[b]{School of Mathematical Sciences, Tel Aviv University, Israel}
+\affil[c]{The Interdisciplinary Center, Herzliya, Israel}
+\affil[*]{{\it Current address}}
+\affil[$\dagger$]{{\it Corresponding author}} 
 
 \date{\today}
 
@@ -160,6 +163,7 @@ The change in the frequency $x$ of phenotype $A$ when either $A$ or $B$ is favor
 &F_A(x) = \rho_A \frac{1+s}{1+sx} x + (1-\rho_A)x, &\quad \text{and} \\
 &F_B(x) = \rho_B \frac{1}{1+s-sx} x + (1-\rho_B)x.
 \end{aligned}\end{equation}
+If the environment fluctuates between favoring $A$ for $k$ generations and $B$ for $l$ generations constituting a period of $(k+l)$ generations, we describe this as $AkBl$.
 
 % Symmetric periods
 \paragraph{Symmetric periods---$AkBk$.}
@@ -194,24 +198,24 @@ We can state this as Result 1.
 Then the stronger the selection (i.e. the greater the value of $s$), the larger the difference in vertical transmission rates that allows a protected polymorphism.}
 
 % Period of one
-\paragraph{Period of one---$A1B1$.}
-In the case  $k=1$ we can find $x^*$ the stable frequency of $A$ at the protected polymorphism.
-Set $F_B(F_A(x))-x = G(x) \cdot x (1-x) \cdot \gamma$ with
+\paragraph{The case $A1B1$.}
+In the case  $k=1$ we can find $x^*$ the frequency of $A$ at the protected polymorphism.
+Set $F_B(F_A(x))-x = G(x) \cdot x (1-x) \cdot \gamma(x)$ with
 \begin{equation} \begin{aligned} \label{eq:xstar_periodic_fluc_k=1}
-&G(x) = ax^2+bx+c, \\
-&\gamma = -\frac{1 + sx}{s} \Big[ 1 + s + s^2 x (1-\rho)(1+x)\Big], \\
-&a = s^2 \rho_A (1-\rho_A) (1 - \rho_B + \rho_B/\rho_A)) > 0, \\
-&b = s(1-\rho_A)(2\rho_B - s\rho_A(1-\rho_B)), \\
-& c = \rho_B - \rho_A - s\rho_A(1-\rho_B).
+G(x) &= ax^2+bx+c, \\
+\gamma(x) &= -\frac{1 + sx}{s} \Big[ 1 + s + s^2 x (1-\rho)(1+x)\Big], \\
+a &= s^2 \rho_A (1-\rho_A) (1 - \rho_B + \rho_B/\rho_A)) > 0, \\
+b &= s(1-\rho_A)(2\rho_B - s\rho_A(1-\rho_B)), \\
+c &= \rho_B - \rho_A - s\rho_A(1-\rho_B).
 \end{aligned} \end{equation}
 Then $x^*$ is a solution of the quadratic $G(x)=0$.
 The condition \eqref{eq:poly_condition_periodic_fluc}, which guarantees that $0 < x^* < 1$, is equivalent to $c<0$, and therefore it also guarantees that $\sqrt{b^2-4ac} > b$.
-So, if $0<s<1$ (so that $b$ is guaranteed to be positive if LHS of eq.~\ref{eq:poly_condition_periodic_fluc} holds), then 
+So, if $0<s<1$ ($b$ is then guaranteed to be positive if LHS of eq.~\ref{eq:poly_condition_periodic_fluc} holds), then 
 \begin{equation}
 x^*= \frac{-b+\sqrt{b^2-4ac}}{2a}.
 \end{equation}
 \autoref{fig:rho1_rho2_phase_k=1} shows $x^*$ and highlights the area of the parameter space in which a protected polymorphism exists.
-The figure demonstrates that the stronger the selection (x-axis), the greater the fluctuations in $\rho$  (y-axis) that still allow a polymorphic population (area between the dashed lines).
+The figure demonstrates that the stronger the selection, the greater the fluctuations in $\rho$ that still allow a polymorphic population (area between the dashed lines).
 
 % figure
 \begin{figure*}[htb]
@@ -226,7 +230,7 @@ Here, $\rho_A=0.5$.}
 \end{figure*}
 
 % Asymmetric period
-\paragraph{Asymmetric period---$AkBl$.}
+\paragraph{General period---$AkBl$.}
 More generally, phenotype $A$ could be favored for $k$ generations and phenotype $B$ for $l$ generations, with the transmission rate following the same cycle with $\rho=\rho_A$ when $A$ is favored and $\rho=\rho_B$ when $B$ is favored.
 The requirements for a protected polymorphism are now
 \begin{equation}\begin{aligned}
@@ -286,7 +290,7 @@ For example, let $s_t \sim U(-1, 1)$ and $\rho_t \sim U(0,1)$ independently (in 
 However, note that symmetry of $s_t$ around zero provides an advantage to phenotype $B$: using Jensen's inequality, $E[w_A/w_B] = E[1+s_t] = 1 \le E[1/(1+s_t)] = E[w_B/w_A]$.
 Therefore, if we take the i.i.d fitness random variables for $A$ and $B$ to be $w_{A,t}, w_{B,t} \sim U(0,1)$, respectively, and define $s_t=(w_{A,t}-w_{B,t})/w_{B,t}$, then neither $A$ nor $B$ has an advantage, on average (i.e. $E[w_{A,t}/w_{B,t}]=E[w_{B,t}/w_{A,t}]$, see \autoref{fig:beta}a), and both $E[z_t]$ and $E[-z_t/(1+s_t)]$ are positive, so that both fixations are not stochastically locally stable, and we expect the population to approach a polymorphic distribution.
 
-Second, if $s_t$ and $\rho_t$ are not independent such that $cov(\rho_t, s_t) \ne 0$, a fixation can occur.
+Second, if $s_t$ and $\rho_t$ are not independent and $cov(\rho_t, s_t) \ne 0$, a fixation can occur.
 Let $w_{A,t}, w_{B,t} \sim U(0,1)$, $s_t=(w_{A,t}-w_{B,t})/w_{B,t}$ and $\rho_t \sim Beta(1+s_t, 1)$ (a beta distribution with parameters $1+s_t$ and $1$). 
 The covariance of $s_t$ and $\rho_t$ is positive ($cov(s_t, \rho_t) \approx 4$ as estimated by averaging over $10^8$ random values of $s_t$ and $\rho_t$); that is, vertical transmission is more likely when $A$ is favored (i.e. $s_t>0$) and oblique transmission is more  likely when $B$ is favored (i.e. $s_t<0$; \autoref{fig:beta}).
 Then $E[log(1+z_t)] >0$ and $B$ almost surely doesn't fix. 
@@ -296,7 +300,7 @@ The opposite occurs if $\rho_t \sim \beta(1, 1+s_t)$ and the covariance of $s_t$
 % figure
 \begin{figure*}[hbt]
 \centering
-\includegraphics[width=\linewidth]{../figures/{beta}.pdf}
+\includegraphics[width=\linewidth]{../figures/{beta}.png}
 \caption{
 \textbf{Covariance of selection and transmission.}
 \textbf{(a)} Histogram of $w_{A,t}/w_{B,t}$ where $w_{A,t}$ and $w_{B,t}$ are identically and independently distributed uniform random variables $U(0,1)$.
@@ -337,7 +341,7 @@ The mean $\mu(x)$ and variance $\sigma^2(x)$ of the change in the frequency $x$ 
 \sigma^2(x) = n x (1-x),
 \end{equation}
 where $S_n = \sum_{t=1}^{n}{z_t}$ and $z_t = \rho_t s_t$.
-Furthermore, combining eq.~\ref{eq:drift_diffusion_terms} with eqs.~46-47 from \citet{Ram2018}, we find that the probability of fixation of phenotype $A$ when its initial frequency if $x$, is
+Furthermore, combining eq.~\ref{eq:drift_diffusion_terms} with eqs.~46-47 from \citet{Ram2018}, we find that the probability of fixation of phenotype $A$ when its initial frequency is $x$, is
 \begin{equation}
 u(x) = \frac{1 - e^{-2 \frac{S_n}{n} x}}{1 - e^{-2 \frac{S_n}{n}}}.
 \end{equation}
@@ -351,7 +355,7 @@ This occurs because selection  affects only those individuals that transmit thei
 We now describe a model in which fluctuations in selection and transmission occur in space, rather then time.
 Consider a population divided to two demes.
 Selection (e.g. reproduction) and transmission (e.g. learning, development) occur within the demes, followed by migration of sub-adults---individuals that have already acquired their phenotype but have yet to reproduce. 
-The frequency of phenotype $A$ in deme $j$ is denoted by $x_j$, and therefore after selection and transmission the frequencies are 
+The frequency of phenotype $A$ in deme $j$ is denoted by $x_j$, and therefore after selection and transmission the frequencies $x_j^s$ are 
 \begin{equation} \label{eq:migration_model_selection_transmission}
 x_j^s = \rho_j \frac{w_j}{\overline{w}_j} x_j + (1-\rho_j) x_j,
 \end{equation}
@@ -383,7 +387,7 @@ A protected polymorphism exists if neither fixation is stable: if migration rati
 % figure
 \begin{figure*}[hbt]
 \centering
-\includegraphics[width=0.75\linewidth]{../figures/asym_migration.pdf}
+\includegraphics[width=0.75\linewidth]{../figures/asym_migration.png}
 \caption{
 \textbf{Oblique transmission and asymmetric migration.}
 Classification of the stable equilibrium of the system in eqs.~\ref{eq:migration_model_selection_transmission}-\ref{eq:migration_model_migration} for different ratios of the migration rates (x-axis) and vertical transmission rates (y-axis) in the two demes.
@@ -491,7 +495,7 @@ An interesting model with a similar structure was studied by \citet{Bisin2001}: 
 They focused on a frequency-dependent transmission mode called \emph{cultural substitution}, in which a parent invests more in child socialization if the parental trait is rare.
 Their model (eq. 12) is a continuous-time equivalent of our model (eq.~\ref{eq:recurrence}) that does not distinguish between horizontal and oblique transmission; considers constant, rather than fluctuating, selection; and includes endogenously fluctuating transmission due to changes in trait frequency.
 They found that under some selection schemes, in which parents choose how many offspring to produce, either an unstable polymorphism (Proposition 4) or a stable polymorphism (Proposition 5) exists, depending on the costs associated with the transmission mode.
-Furthermore, in the absence of selection trait polymorphism is neutral in our model (set $s=0$ in eq.~\ref{eq:recurrence}), but \citet{Bisin2001} found that frequency-dependent transmission leads to a globally stable polymorphism~(Proposition 1).
+Furthermore, in the absence of selection, trait polymorphism is neutral in our model (set $s=0$ in eq.~\ref{eq:recurrence}), but \citet{Bisin2001} found that frequency-dependent transmission leads to a globally stable polymorphism~(Proposition 1).
 
 An important topic in cultural evolution is the evolutionary dilemma known as Rogers' paradox~\citep{Rogers1988}, which is similar to the problem of the maintenance of cooperation: social learners (aka \emph{cheaters}) benefit from new cultural traits invented by individual learners (aka \emph{cooperators}) without paying the cost associated with individual learning.
 Several authors used population structure to help explain the maintenance of individual learning in this scenario, paralleling the use of population structure for explaining the maintenance of cooperation.
@@ -533,8 +537,8 @@ the Morrison Institute for Population and Resources Studies, Stanford University
 
 % bibliography
 \bibliographystyle{agsm}
-\bibliography{/Users/yoavram/Documents/library}
-%\bibliography{ms_sunnyvale}
+%\bibliography{/Users/yoavram/Documents/library}
+\bibliography{ms_sunnyvale}
 
 % Appendix
 \section*{Appendix I}
