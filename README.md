@@ -1,10 +1,10 @@
 Code name: Sunnyvale
 # Vertical and oblique cultural transmission fluctuating in time and in space
-## Yoav Ram, Uri Liberman, Marcus W Feldman
+## Yoav Ram, Uri Liberman, Marcus W Feldman, TPB 2019
 
 This is the repository for the open-access manuscript:
 
-> Ram, Yoav, Liberman, Uri, and Feldman, Marcus W. 2019. Vertical and Oblique Cultural Transmission Fluctuating in Time and in Space. _Theoretical Population Biology_ 125:11–19. doi:[10.1016/j.tpb.2018.11.001](https://doi.org/10.1016/j.tpb.2018.11.001).
+> Ram, Liberman, and Feldman. 2019. Vertical and Oblique Cultural Transmission Fluctuating in Time and in Space. _Theoretical Population Biology_ 125:11–19. doi:[10.1016/j.tpb.2018.11.001](https://doi.org/10.1016/j.tpb.2018.11.001).
 
 ![model](https://ars.els-cdn.com/content/image/1-s2.0-S0040580918301333-gr1.jpg)
 
